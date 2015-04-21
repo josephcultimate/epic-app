@@ -45,7 +45,7 @@ App.initializer({
 
 App.initializer({
     name: 'phonegap',
-    after: 'compileTemplates',
+    before: 'compileTemplates',
     initialize: function(container, application) {
         application.deferReadiness();
         alert('phonegap initialize: ' + App.onDeviceReady);
