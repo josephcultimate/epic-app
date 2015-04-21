@@ -1,0 +1,18 @@
+﻿p {
+    margin-bottom: @us-base-margin-width;
+
+    &:only-child {
+        margin-bottom: 0;
+    }
+}
+
+dl:not(.dl-horizontal) dd + dt {
+  margin-top: @us-base-margin-width;
+}
+dt {
+  color: @us-muted-text-color;
+  font-weight: inherit;
+}
+dd {
+  color: @us-primary-dark-gray;
+}

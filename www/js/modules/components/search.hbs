@@ -1,0 +1,24 @@
+<div class="search-input">
+    <div class="form-group has-feedback">
+      {{input id='search' class='form-control' autocomplete='off' type='search'
+              placeholder=placeholderText value=searchText
+              focus-in='searchEnter' focus-out='searchExit'}}
+
+      <span class="form-control-feedback">
+        {{#if isCollapsed}}
+        <i class="fa fa-search"></i>
+        {{/if}}
+        {{#if isExpandedDirty}}
+        <label for="search" {{action 'searchClear'}}>
+          <i class="fa fa-times" style="cursor: pointer; pointer-events: all;"></i>
+        </label>
+        {{/if}}
+      </span>
+    </div>
+
+    {{#if isExpanded}}
+    <a href="#" class="btn btn-primary search-button" {{action 'searchExecute'}}>
+        <i class="fa fa-search"></i>
+    </a>
+    {{/if}}
+</div>

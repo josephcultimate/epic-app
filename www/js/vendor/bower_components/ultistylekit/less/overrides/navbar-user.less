@@ -1,0 +1,122 @@
+﻿@header-navbar-small-height: 50px;
+@header-navbar-height: 90px;
+
+@header-navbar-padding-vertical: ((@header-navbar-height - @line-height-computed) / 2);
+@header-navbar-small-padding-vertical: ((@header-navbar-small-height - @line-height-computed) / 2);
+
+@header-navbar-left-right-padding: 30px;
+@header-navbar-left-right-small-padding: 15px;
+@header-navbar-top-bottom-padding: 35px;
+
+.navbar-user {
+    border-width: 0 0 4px 0;
+
+    .navbar-collapse {
+        max-height: none;
+    }
+
+    .navbar-nav > li > a {
+        padding: 0;
+    }
+
+    .nav > li {
+        padding-right: @header-navbar-left-right-padding;
+        padding-left: @header-navbar-left-right-padding;
+        padding-top: @header-navbar-top-bottom-padding;
+        padding-bottom: @header-navbar-top-bottom-padding;        
+    }
+
+    .nav > li > a {
+        cursor: pointer;
+    }
+
+    .navbar-brand {
+        padding: 0;
+
+        .logo {
+            padding-left: 4px;
+        }
+
+        .small-logo {
+            max-width: 75px;
+            max-height: 25px;
+        }
+
+        .large-logo {
+            max-width: 300px;
+            max-height: 65px;
+        }
+
+        &.navbar-brand-ultimate {
+            .generic-logo {
+                display: none;
+            }
+        }
+
+        &.navbar-brand-generic {
+            .ultimate-logo {
+                display: none;
+            }
+        }
+    }
+
+    // TODO may need in Bootstrap 3.3.0
+    // .navbar-brand-generic, 
+    // .navbar-brand-ultimate {
+    //     @media (min-width: @screen-lg-min) {
+    //         padding-top: 16px;
+    //     }
+
+    //     @media (max-width: @screen-md-max) {
+    //         padding-top: 15px;
+    //     }
+    // }
+
+    @media (min-width: @screen-lg-min) {
+        .navbar-brand {
+            line-height: @header-navbar-height;
+
+            .small-logo {
+                display: none;
+            }
+        }
+    }
+
+    @media (max-width: @screen-md-max) {
+        min-height: @header-navbar-small-height; .navbar-brand {
+            line-height: @header-navbar-small-height;
+        }
+
+        .large-logo {
+            display: none;
+        }
+
+        .nav > li {
+            padding-top: @header-navbar-small-padding-vertical;
+            padding-bottom: @header-navbar-small-padding-vertical;
+        }
+
+        .navbar-toggle {
+            margin-top: ((@header-navbar-small-height - 34px) / 2);
+            margin-bottom: ((@header-navbar-small-height - 34px) / 2);
+        }
+    }
+
+    @media(max-width: @screen-md-min) and (min-width:@screen-sm-min) {
+        .nav > li {
+            padding-right: @header-navbar-left-right-small-padding;
+            padding-left: @header-navbar-left-right-small-padding;
+        }
+    }
+
+    @media (max-width: @screen-xs-max) {
+        .navbar-collapse {
+            border-top-width: @us-base-border-width;
+            border-top-style: @us-border-style;
+        }
+
+        li > a {
+            text-align: right;
+        }
+    }
+}

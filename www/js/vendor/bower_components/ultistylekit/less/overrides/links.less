@@ -1,0 +1,14 @@
+﻿.action-link {
+    display: inline-block;
+    .us-responsive(@us-base-margin-width);
+
+    + & {
+        @media (max-width: @screen-xs-max) {
+            margin-top: @us-base-margin-width;
+        }
+
+        @media (min-width: @screen-sm-min) {
+            margin-left: @us-base-margin-width;
+        }
+    }
+}

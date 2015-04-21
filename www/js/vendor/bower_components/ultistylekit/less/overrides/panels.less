@@ -1,0 +1,36 @@
+.panel-heading i.fa {
+  -webkit-user-select: none;
+          user-select: none;
+}
+.panel-heading .edit-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 1.5em;
+  vertical-align: -7%
+}
+.panel-heading .collapse-icon {
+  cursor: pointer;
+  float: right;
+  font-size: 1.5em;
+}
+.panel-heading .label {
+  margin-left: 10px;
+}
+.panel {
+  position: relative;
+  margin-bottom: 15px;
+}
+.panel-title {
+  line-height: 1.1;
+  font-weight: bold;
+}
+.panel.highlight::before {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -6px;
+  content: '\00a0';
+  width: 4px;
+  background-color: #fed939;
+  border-radius: 2px;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>UltiPro</title>
+
+    <!-- ultistylekit.css plus a few additional definitions -->
+    <link rel="stylesheet" href="js/vendor/bower_components/ultistylekit/application.css">
+
+    <!-- Our team's definitions -->
+    <link rel="stylesheet" href="style/application.css">
+
+    <!-- Support for animations -->
+    <!-- <link rel="stylesheet" href="style/animate.min.css"> -->
+
+    <!-- Script - (ORDER MATTERS!) -->
+    <script src="js/vendor/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/vendor/bower_components/bootstrap/js/modal.js"></script>
+    <script src="js/vendor/bower_components/ember/ember-template-compiler.js"></script>
+    <script src="js/vendor/bower_components/ember/ember.min.js"></script>
+    <script src="js/vendor/bower_components/ember-data/ember-data.min.js"></script>
+    <script src="js/vendor/bower_components/ember-validations/ember-validations.js"></script>
+    <script src="js/vendor/bower_components/underscore/underscore-min.js"></script>
+    <script src="js/vendor/bower_components/chance/chance.js"></script>
+    <script src="js/vendor/bower_components/ember-i18n/lib/i18n.js"></script>
+    <script src="js/vendor/bower_components/ember-i18n/lib/i18n-plurals.js"></script>
+    <script src="js/vendor/bower_components/ultistylekit/dist/js/ultistylekit.js"></script>
+
+    <!-- Application code -->
+    <script src="js/dist/person-app.min.js"></script>
+    <script src="js/dist/person-components.min.js"></script>
+    <script src="js/dist/person-signin.min.js"></script>
+    <script src="js/dist/person-tenant.min.js"></script>
+    <script src="js/dist/person-presence.min.js"></script>
+</head>
+<body>
+
+    <!-- ValidationMessage Component -->
+    <script type="text/x-handlebars" data-template-name="components/validation-message">
+        {{#if message}}
+        <div class="col-sm-offset-3 col-sm-7 col-md-offset-3 col-md-7 col-lg-offset-4 col-lg-5 alert alert-danger">
+            <a href="#" {{action "resetmsg" person}} class="epic-badge"><i class="fa fa-times-circle pull-right"></i></a>
+            <p>{{message}}</p>
+        </div>
+        {{/if}}
+    </script>
+
+    <!-- FormInput Component -->
+    <script type="text/x-handlebars" data-template-name="components/form-input"></script>
+
+    <!-- SearchBar Component -->
+    <script type="text/x-handlebars" data-template-name="components/search-bar"></script>
+
+    <!-- Application -->
+    <script type="text/x-handlebars" data-template-name="application"></script>
+
+    <!-- Tenant: login -->
+    <script type="text/x-handlebars" data-template-name="login"></script>
+
+    <!-- Tenant: view all -->
+    <script type="text/x-handlebars" data-template-name="tenants/index"></script>
+
+    <!-- Tenant: create -->
+    <script type="text/x-handlebars" data-template-name="tenants/create"></script>
+
+    <!-- Tenant: details -->
+    <script type="text/x-handlebars" data-template-name="tenant"></script>
+
+    <!-- Person: sign in -->
+    <script type="text/x-handlebars" data-template-name="persons/index"></script>
+
+    <!-- Person: presence -->
+    <script type="text/x-handlebars" data-template-name="profile"></script>
+
+</body>
+</html>

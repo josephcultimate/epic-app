@@ -1,0 +1,104 @@
+//
+// Navbars
+// --------------------------------------------------
+
+// Default navbar
+.navbar.navbar-ulti {
+  min-height: 50px;
+  font-family: @font-family-serif;
+}
+.navbar-ulti {
+  &:extend(.navbar-inverse);
+
+  background-color: @us-brand-green;
+  border-color: @us-brand-green;
+
+  .navbar-brand {
+    color: @us-navbar-ultipro-link-color;
+    &:hover,
+    &:focus {
+      background-color: @us-navbar-ultipro-secondary-bg;
+    }
+  }
+
+  .navbar-text {
+    color: @us-navbar-ultipro-link-color;
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: @us-navbar-ultipro-link-color;
+      background-color: @us-brand-green;
+
+      &:hover,
+      &:focus {
+        color: @us-navbar-ultipro-link-color;
+        background-color: @us-navbar-ultipro-secondary-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @us-navbar-ultipro-link-color;
+        background-color: @us-navbar-ultipro-secondary-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-disabled-color;
+        background-color: @navbar-default-link-disabled-bg;
+      }
+    }
+    
+    @media (max-width: @grid-float-breakpoint-max) {
+      // Dropdowns get custom display
+      .open .dropdown-menu {
+        > .dropdown-header {
+          border-color: @navbar-inverse-border;
+          color: @us-navbar-ultipro-link-color;
+        }
+        .divider {
+          background-color: @us-navbar-ultipro-secondary-bg;
+        }
+        > li > a {
+          color: @us-navbar-ultipro-link-color;
+          &:hover,
+          &:focus {
+            background-color: @us-navbar-ultipro-secondary-bg;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-inverse-link-active-color;
+            background-color: @us-navbar-ultipro-secondary-bg;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-inverse-link-disabled-color;
+            background-color: @navbar-inverse-link-disabled-bg;
+          }
+        }
+      }
+    }
+  }
+
+  // Darken the responsive nav toggle
+  .navbar-toggle {
+    border-color: @navbar-inverse-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: @us-navbar-ultipro-secondary-bg;
+    }
+    .icon-bar {
+      background-color: @navbar-inverse-toggle-icon-bar-bg;
+    }
+  }
+}

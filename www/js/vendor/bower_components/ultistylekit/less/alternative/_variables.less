@@ -1,0 +1,271 @@
+// Ultimate Software colors
+// -------------------------
+
+@us-primary-light-gray: #f5f5f5;
+@us-primary-gray: #cccccc;
+@us-primary-darker-gray: #666;
+@us-primary-dark-gray: #404040;
+@us-primary-green: #4b9510;
+@us-primary-light-green: #5ca616;
+@us-primary-blue: #4c97d9;
+
+@us-link-color: #00aaf3;
+
+@us-primary-help-block-color: #808080;
+@us-primary-alert-color: #FFCD19;
+@us-primary-info-color: #6288B0;
+@us-primary-error-color: #D40200;
+
+@us-brand-success: #346b00;
+@us-brand-info: #246baa;
+@us-brand-warning: #c37900;
+@us-brand-danger: #d40200;
+
+@us-brand-green: #5ca616;
+
+// Base dimensions
+// -------------------------
+
+@us-base-sm-width: 5px;
+@us-base-md-width: 2*@us-base-sm-width;
+@us-base-lg-width: 3*@us-base-sm-width;
+@us-base-width: @us-base-lg-width;
+
+// Margins
+// -------------------------
+
+@us-base-margin-sm-width: @us-base-sm-width;
+@us-base-margin-md-width: @us-base-md-width;
+@us-base-margin-width: @us-base-width;
+
+// Padding
+// -------------------------
+
+@us-base-padding-sm-width: @us-base-sm-width;
+@us-base-padding-md-width: @us-base-md-width;
+@us-base-padding-width: @us-base-width;
+
+// Borders
+// -------------------------
+
+@us-base-border-width: 1px;
+@us-border-style: solid;
+@us-hr-border: #ccc;
+@us-border-radius-base: 0;
+
+// Containers
+// -------------------------
+
+@us-container-padding-width: @us-base-padding-width;
+@us-container-margin-width: @us-base-margin-width;
+@us-container-background-color: @us-primary-light-gray;
+@us-container-border-color: @us-primary-gray;
+
+// Text colors
+// -------------------------
+
+@us-regular-body-text-color: #515151;
+@us-headings-text-color: @us-regular-body-text-color;
+@us-muted-text-color: #808080;
+@input-disabled-color: #aaa;
+
+// Typography
+// -------------------------
+
+@us-font-size: 15px;
+@us-font-weight: 300;
+@us-label-font-weight: @us-font-weight;
+@us-headings-font-weight: @us-font-weight;
+
+// Forms
+// -------------------------
+
+@us-required-field-indicator-color: @us-primary-error-color;
+@us-select-text-color: #999;
+
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+
+@us-state-success-text:             @us-brand-success;
+@us-state-success-bg:               #dcebce;
+@us-state-success-border:           @us-brand-success;
+
+@us-state-info-text:                @us-brand-info;
+@us-state-info-bg:                  #d9ecfc;
+@us-state-info-border:              @us-brand-info;
+
+@us-state-warning-text:             @us-brand-warning;
+@us-state-warning-bg:               #ffedd1;
+@us-state-warning-border:           @us-brand-warning;
+
+@us-state-danger-text:              @us-brand-danger;
+@us-state-danger-bg:                #f4e4e4;
+@us-state-danger-border:            @us-brand-danger;
+
+//== Labels
+//
+//##
+
+// Navbar
+// -------------------------
+// UltiPro navbar
+//
+// Reset ultipro navbar basics
+@us-navbar-ultipro-color:                      @us-primary-blue;
+@us-navbar-ultipro-bg:                         #fff;
+@us-navbar-ultipro-secondary-bg:               #508f13;
+@us-navbar-ultipro-border:                     darken(@us-navbar-ultipro-bg, 10%);
+
+// Recruitment top stripe
+@us-navbar-ultipro-border-top-size:            4px;
+@us-navbar-ultipro-border-top-color:           @us-primary-light-green;
+
+// UltiPro logo
+@us-navbar-ultipro-logo-width:                 74px;
+@us-navbar-ultipro-logo-vertical-offset:       2px;
+@us-navbar-ultipro-logo-divider-width:         1px;
+@us-navbar-ultipro-logo-divider-height:        24px;
+@us-navbar-ultipro-logo-divider-margin-width:  10px;
+
+// UltiPro navbar links
+@us-navbar-ultipro-link-color:                 @link-color;
+@us-navbar-ultipro-link-hover-color:           darken(@us-navbar-ultipro-link-color, 15%);
+@us-navbar-ultipro-link-hover-bg:              transparent;
+@us-navbar-ultipro-link-active-color:          @us-navbar-ultipro-link-hover-color;
+@us-navbar-ultipro-link-active-bg:             transparent;
+@us-navbar-ultipro-link-disabled-color:        #444; // TODO: what would this be?
+@us-navbar-ultipro-link-disabled-bg:           transparent;
+
+// UltiPro navbar brand label
+@us-navbar-ultipro-brand-color:                @us-primary-dark-gray;
+@us-navbar-ultipro-brand-hover-color:          lighten(@us-navbar-ultipro-brand-color, 15%);
+@us-navbar-ultipro-brand-hover-bg:             transparent;
+
+// UltiPro navbar toggle
+@us-navbar-ultipro-toggle-hover-bg:            @us-primary-light-gray;
+@us-navbar-ultipro-toggle-icon-bar-bg:         @us-primary-blue;
+@us-navbar-ultipro-toggle-border-color:        @us-primary-blue;
+
+//== Navs
+//
+//##
+
+//== Tabs
+@nav-tabs-active-link-hover-color:             #515151;
+
+//== Pills
+@nav-pills-active-link-hover-color:             #515151;
+
+//== Breadcrumbs
+//
+//##
+
+//** Breadcrumb text color
+@breadcrumb-color:              #00aaf3;
+//** Text color of current page in the breadcrumb
+@breadcrumb-active-color:       #515151;
+
+//== Badges
+//
+//##
+
+@badge-bg:                      @us-primary-error-color;
+@badge-active-color: white;
+@badge-active-bg: @us-primary-error-color;
+
+// Grid List Item
+// -------------------------
+
+@us-grid-list-border-radius:                        5px;
+@us-grid-list-padding:                              0 @us-base-padding-width;
+@us-grid-list-header-color:                         @us-primary-light-gray;
+@us-grid-list-header-text-color:                    @us-primary-dark-gray;
+@us-grid-list-header-font-size:                     11px;
+@us-grid-list-header-important-font-weight:         bold;
+@us-grid-list-header-padding:                       @us-base-padding-md-width 0;
+@us-grid-list-content-background-color:             #fff;
+@us-grid-list-item-border-color:                    #ececec;
+@us-grid-list-item-border:                          @us-base-border-width @us-border-style @us-grid-list-item-border-color;
+@us-grid-list-item-padding:                         @us-grid-list-header-padding;
+@us-grid-list-item-primary-content-font-size:       21px;
+@us-grid-list-item-primary-content-font-weight:     @us-font-weight;
+@us-grid-list-item-importent-content-font-weight:   bold;
+
+// List Item Hover & Selection
+// -------------------------
+
+@us-list-item-border-size:                    @us-base-border-width;
+@us-list-item-border-color:                   #ececec;
+@us-list-item-border:                         @us-list-item-border-size @us-border-style @us-list-item-border-color;
+@us-list-item-hover-border-color:             fadeout(lighten(@us-primary-blue, 25%), 20%);
+@us-list-item-hover-background-color:         lighten(@us-list-item-hover-border-color, 20%);
+@us-list-item-active-border-color:            fadeout(@us-primary-blue, 20%);
+@us-list-item-active-background-color:        lighten(@us-list-item-active-border-color, 40%);
+
+
+// Bootstrap overrides
+@brand-primary:         @us-primary-light-green;
+@brand-success:         @us-primary-blue;
+@brand-info:            @us-brand-info;
+@brand-warning:         @us-brand-warning;
+@brand-danger:          @us-brand-danger;
+
+@btn-default-color:     @us-regular-body-text-color;
+
+@link-color:            @us-link-color;
+@text-color:            @us-regular-body-text-color;
+@font-family-sans-serif:  "museo-sans", Arial, Helvetica, sans-serif;
+@font-family-serif:       "museo-slab", Arial, Helvetica, sans-serif;
+
+@font-size-base:          @us-font-size;
+
+@font-size-h1:            floor((@font-size-base * 2.4)); // ~36px
+@font-size-h2:            floor((@font-size-base * 2.0)); // ~30px
+@font-size-h3:            ceil((@font-size-base * 1.6)); // ~24px
+@font-size-h4:            ceil((@font-size-base * 1.2)); // ~18px
+@font-size-h5:            @font-size-base; // ~15px
+@font-size-h6:            ceil((@font-size-base * 0.8)); // ~12px
+
+@headings-font-family:    @font-family-serif;
+@headings-font-weight:    @us-headings-font-weight;
+@headings-color:          @us-headings-text-color;
+@component-active-color:    @us-regular-body-text-color;
+@component-active-bg:       @us-list-item-active-background-color;
+@popover-arrow-outer-color:           rgba(0,0,0,.25);
+@popover-arrow-outer-fallback-color:  #999;
+@list-group-border:             @us-list-item-border-color;
+@list-group-hover-bg:           @us-list-item-hover-background-color;
+@list-group-active-border:      @us-list-item-active-border-color;
+@list-group-active-text-color:  darken(@list-group-active-bg, 40%);
+@text-muted:                  @us-muted-text-color;;
+@headings-small-color:        @us-primary-dark-gray;
+@hr-border:                   @us-hr-border;
+
+@border-radius-base:          @us-border-radius-base;
+@border-radius-small:         @us-border-radius-base;
+@border-radius-large:         @us-border-radius-base;
+
+//== Pager
+//
+//##
+@pager-border-radius:            none;
+
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+@state-success-text:             @us-state-success-text;
+@state-success-bg:               @us-state-success-bg;
+@state-success-border:           @us-state-success-border;
+
+@state-info-text:                @us-state-info-text;
+@state-info-bg:                  @us-state-info-bg;
+@state-info-border:              @us-state-info-border;
+
+@state-warning-text:             @us-state-warning-text;
+@state-warning-bg:               @us-state-warning-bg;
+@state-warning-border:           @us-state-warning-border;
+
+@state-danger-text:              @us-state-danger-text;
+@state-danger-bg:                @us-state-danger-bg;
+@state-danger-border:            @us-state-danger-border;

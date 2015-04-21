@@ -1,0 +1,89 @@
+@switch-container-width: 70px;
+@switch-container-height: 25px;
+@switch-container-padding: 1px;
+@switch-width: 50px;
+@switch-height: @switch-container-height - 2 * (@switch-container-padding + 1);
+@switch-border-radius: 0px;
+@switch-color: #21AAF2;
+
+.switch-group {
+  margin-bottom: 15px;
+  display: table;
+
+  .control-label {
+    width: 100%;
+    display: table-cell;
+    margin-bottom: 0;
+  }
+
+  .switch {
+    margin-left: 10px;
+  }
+}
+
+.switch {
+  position: relative;
+  border: 1px solid @switch-color;
+  background-color: white;
+  padding: @switch-container-padding;
+  width: @switch-container-width;
+  height: @switch-container-height;
+  border-radius: @switch-border-radius;
+  display: inline-block;
+  vertical-align: middle;
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  label {
+    display: block;
+    width: @switch-container-width;
+    height: @switch-container-height;
+    margin: 0;
+    margin-left: -1 * (@switch-container-padding + 1);
+    margin-top: -1 * (@switch-container-padding + 1);
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .switch-label {
+    font-family: Helvetica Neue;
+    font-size: 0.825em;
+    position: absolute;
+    top: @switch-container-padding;
+    left: @switch-container-padding;
+    display: block;
+    width: @switch-width;
+    height: @switch-height;
+    line-height: @switch-height;
+    vertical-align: middle;
+    text-align: center;
+    -webkit-user-select: none;
+    user-select: none;
+
+    border: 1px solid #DDDDDD;
+    border-radius: @switch-border-radius;
+    background-color: #F4F4F4;
+    color: #AFAFAF;
+
+    transition: 0.15s ease-in;
+    transition-property: background-color, color, border-color, -webkit-transform;
+    transition-delay: 0.2s, 0.2s, 0.2s, 0;
+    transition-duration: 0, 0, 0, 0.15s;
+
+    &:before {
+      content: 'Off';
+    }
+  }
+
+  :checked + .switch-label {
+    background-color: @switch-color;
+    border-color: @switch-color;
+    color: white;
+    -webkit-transform: translateX(@switch-container-width - @switch-width - 2 * @switch-container-padding - 2);
+    &:before {
+      content: 'On';
+    }
+  }
+}

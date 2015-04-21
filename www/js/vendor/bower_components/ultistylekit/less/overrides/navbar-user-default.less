@@ -1,0 +1,49 @@
+﻿.navbar-user-default {
+    background-color: @us-navbar-user-default-background-color;
+    border-color: @us-navbar-user-default-stripe-color;
+}
+
+.navbar-user-default .nav > li > a {
+    color: @us-navbar-user-default-text-color;
+    background-color: transparent;
+}
+
+.navbar-user-default .nav > li > a:hover,
+.navbar-user-default .nav > li > a:focus {
+    color: @us-navbar-user-default-text-color;
+    background-color: transparent;
+}
+
+.navbar-user-default .navbar-toggle:hover,
+.navbar-user-default .navbar-toggle:focus {
+    background-color: transparent;
+}
+
+.navbar-user-default .navbar-toggle .icon-bar {
+    background: @us-navbar-user-default-text-color;
+}
+
+.navbar-user-default .navbar-collapse {
+    border-color: @us-navbar-user-default-stripe-color;
+}
+
+.navbar-user-default .navbar-collapse .dropdown-menu > li > a {
+    color: #000;
+}
+
+.navbar-user-default .navbar-collapse .dropdown-menu > li > a:hover,
+.navbar-user-default .navbar-collapse .dropdown-menu > li > a:focus {
+    color: #000;
+}
+
+@media (max-width: 767px) {
+    .navbar-user-default .navbar-collapse .dropdown-menu > li > a {
+        color: @us-navbar-user-default-text-color;
+    }
+
+    .navbar-user-default .navbar-collapse .dropdown-menu > li > a:hover,
+    .navbar-user-default .navbar-collapse .dropdown-menu > li > a:focus {
+        color: @us-navbar-user-default-text-color;
+        background-color: transparent;
+    }
+}
