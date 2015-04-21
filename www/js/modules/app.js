@@ -42,11 +42,6 @@ App.initializer({
     }
 });
 
-
-App.deferReadiness();
-alert('phonegap initialize: ' + App.onDeviceReady);
-document.addEventListener('deviceready', App.onDeviceReady, false);
-
 App.onDeviceReady = function() {
     App.receivedEvent();
     var pushNotification = window.plugins.pushNotification;
@@ -60,6 +55,10 @@ App.receivedEvent = function() {
     alert('event received');
     console.log('Received Event: ');
 };
+
+App.deferReadiness();
+alert('phonegap initialize: ' + App.onDeviceReady);
+document.addEventListener('deviceready', App.onDeviceReady, false);
 
 /* Initialization task: determine locale and initialize i18n support */
 App.initializer({
