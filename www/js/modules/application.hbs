@@ -1,0 +1,77 @@
+<!-- BEGIN::top-part -->
+  <div {{bind-attr class="NavbarLoggedClass"}}>
+    <div class="container-fluid">
+      
+    <!-- BEGIN::far-right-drop-down-menu -->
+      <ul class="nav navbar-nav navbar-right mbn">
+
+        {{#if SessionToken}}
+          <!-- BEGIN::desktop -->
+          <li class="dropdown hidden-xs">
+              <a href="" data-toggle="dropdown" class="dropdown-toggle">
+                <span id="application_presence_name">{{ Presence.first_name }} {{ Presence.last_name }}</span>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- <li class="divider"></li> -->
+                <li id="application_logout_link"><a href="" {{action 'logout'}}>{{t "system.logout.title"}}</a></li>
+              </ul>
+          </li>
+          <!-- END::desktop -->
+          <!-- BEGIN::mobile -->
+          <li class="dropdown visible-xs">
+            <a href="" class="pull-right" {{action 'logout'}}>
+              <span id="application_logout_link_xs">{{t "system.logout.title"}}</span>
+            </a>
+          </li>
+          <!-- END::mobile -->
+        {{else}}
+          <!--<button id="application_logout_button" type="button" class="btn btn-default btn-xs navbar-btn pull-right" {{action "logout" on="click"}}>{{t "system.logout.title"}}</button>-->
+        {{/if}}
+      </ul>
+
+      <!-- SearchBar Component -->
+      {{search-bar controller=controller}}
+
+      <div class="navbar-header">
+
+        <!-- BEGIN::tenant-name-on-top-left-desktop -->
+        <span class="navbar-brand hidden-xs">
+          <span class="divider"></span>
+      	  {{#if SessionToken}}
+            <span class="text" id="application_tenant">{{ Presence.tenant_name }}</span>
+          {{else}}
+            <span class="text" id="application_default_tenant">Epic, inc.</span>
+          {{/if}}
+        </span>
+        <!-- END::tenant-name-on-top-left-desktop -->
+
+      </div>
+    </div>
+  </div>
+  <!-- END::top-part -->
+
+  <!-- BEGIN::bottom-part -->
+  <div class="main below-navbar">
+
+    {{#if SessionToken}}
+    <!-- BEGIN::left-navbar @VisibleIf[userIsLogged] 
+         ng-class="{invisible: !initSidebar && mobile, fadeInLeft: openSidebar && mobile, fadeOutLeft: !openSidebar && mobile}" -->
+    <div class="sidebar ptm animated hidden-xs">
+      <ul class="nav nav-bars">
+        <li class="active">
+          <a href="" id="application_sidebar_item_presence" {{action "presence" bubbles=false}}><i class="fa fa-fw fa-lg fa-user"></i> {{t "system.presence.menu"}}</a>
+        </li>
+      </ul>
+    </div>
+    {{/if}}
+    <!-- END::left-navbar -->
+
+    <!-- BEGIN::main-content -->
+    <div class="body" autoscroll>
+      {{outlet}}
+    </div>
+    <!-- END::main-content -->
+
+  </div>
+  <!-- END::bottom-part -->

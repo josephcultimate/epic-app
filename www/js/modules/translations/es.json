@@ -1,0 +1,28 @@
+{
+    "system":{
+        "logout.title": "(es)Logout"
+    },
+  "errors":{
+    "inclusion": "(es)is not included in the list",
+    "exclusion": "(es)is reserved",
+    "invalid": "(es)is invalid",
+    "confirmation": "(es)doesn't match {{attribute}}",
+    "accepted": "(es)must be accepted",
+    "empty": "(es)can't be empty",
+    "blank": "(es)can't be blank",
+    "present": "(es)must be blank",
+    "tooLong": "(es)is too long (maximum is {{count}} characters)",
+    "tooShort": "(es)is too short (minimum is {{count}} characters)",
+    "wrongLength": "(es)is the wrong length (should be {{count}} characters)",
+    "notANumber": "(es)is not a number",
+    "notAnInteger": "(es)must be an integer",
+    "greaterThan": "(es)must be greater than {{count}}",
+    "greaterThanOrEqualTo": "(es)must be greater than or equal to {{count}}",
+    "equalTo": "(es)must be equal to {{count}}",
+    "lessThan": "(es)must be less than {{count}}",
+    "lessThanOrEqualTo": "(es)must be less than or equal to {{count}}",
+    "otherThan": "(es)must be other than {{count}}",
+    "odd": "(es)must be odd",
+    "even": "(es)must be even"
+  }
+}

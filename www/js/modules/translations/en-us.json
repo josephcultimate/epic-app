@@ -1,0 +1,68 @@
+{
+  "system":{
+    "logout.title": "Sign Out",
+    "presence.menu": "Presence",
+    "presence.title": "Your Presence",
+    "presence.aboutyou": "About You",
+    "presence.education": "Education",
+    "presence.experience": "Work Experience",
+    "signin.title":"Select a user to sign in",
+    "signin.noUsers":"No users found",
+    "signin.employeeadmins": "Employee/Admins",
+    "signin.employees": "Employees",
+    "signin.manageradmins": "Manager/Admins",
+    "signin.managers": "Managers",
+    "signin.administrators": "Administrators"
+  },
+  "errors":{
+    "inclusion": "is not included in the list",
+    "exclusion": "is reserved",
+    "invalid": "is invalid",
+    "confirmation": "doesn't match {{attribute}}",
+    "accepted": "must be accepted",
+    "empty": "can't be empty",
+    "blank": "can't be blank",
+    "present": "must be blank",
+    "tooLong": "is too long (maximum is {{count}} characters)",
+    "tooShort": "is too short (minimum is {{count}} characters)",
+    "wrongLength": "is the wrong length (should be {{count}} characters)",
+    "notANumber": "is not a number",
+    "notAnInteger": "must be an integer",
+    "greaterThan": "must be greater than {{count}}",
+    "greaterThanOrEqualTo": "must be greater than or equal to {{count}}",
+    "equalTo": "must be equal to {{count}}",
+    "lessThan": "must be less than {{count}}",
+    "lessThanOrEqualTo": "must be less than or equal to {{count}}",
+    "otherThan": "must be other than {{count}}",
+    "odd": "must be odd",
+    "even": "must be even"
+  },
+  "warnings":{
+    "person.import.insufficientFields": "Invalid person with email '%s'. Error: %v.",
+    "person.import.userNameRequired": "User name is required.",
+    "person.import.firstNameRequired": "First name is required.",
+    "person.import.lastNameRequired": "Last name is required.",
+    "person.import.emailRequired": "E-mail is required.",
+    "education.import.invalidSchool": "Invalid school provided. %s Skipping import of this record.",
+    "education.import.insufficientFields": "Insufficient fields.  Skipping import of this record",
+    "education.import.noPersonIdFound": "Person id cannot be empty.  Skipping import of this record",
+    "education.import.invalidPersonId": "An error occurred while trying to find person with id %s. Skipping import of this record",
+    "education.import.maxEducationRecordsMet": "Person %s already contains the maximum # of education records (%d). Cannot import education record (SCHOOL: %s, LEVEL: %s, MAJOR: %s, MINOR: %s)",
+
+    "experience.validate.companyNameIsRequired": "Company name is required. Skipping import of this record.",
+    "experience.validate.jobTitleIsRequired": "Job title is required. Skipping import of this record.",
+
+    "experience.advise.companyNameTruncated": "Company length (%d) must be less than or equal to (%d) - truncating %d characters.",
+    "experience.advise.jobTitleTruncated": "Job Title length (%d) must be less than or equal to (%d) - truncating %d characters.",
+    "experience.advise.locationTruncated": "Location length (%d) must be less than or equal to (%d) - truncating %d characters.",
+    "experience.advise.descriptionTruncated": "Description length (%d) must be less than or equal to (%d) - truncating %d characters.",
+
+    "experience.import.invalidCompany": "Invalid company name provided. %s Skipping import of this record.",
+    "experience.import.invalidJobTitle": "Invalid job title provided. %s Skipping import of this record.",
+    "experience.import.insufficientFields": "Insufficient fields.  Skipping import of this record",
+    "experience.import.noPersonIdFound": "Person id cannot be empty.  Skipping import of this record",
+    "experience.import.invalidPersonId": "An error occurred while trying to find person with id %s. Skipping import of this record",
+    "experience.import.maxExperienceRecordsMet": "Person %s already contains the maximum # of experience records (%d). Cannot import experience record (COMPANY: %s, JOB TITLE: %s, LOCATION: %s)",
+    "experience.import.noLocation": "No location provided. Record still imported."
+  }
+}

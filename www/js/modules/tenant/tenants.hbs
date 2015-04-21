@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li class="active">Tenants</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <ul id="tenants_Tenants_List" class="list-group">
+                    {{#each tenant in model }}
+                        <li {{ bind-attr id="tenant.rowId" class="tenant.enabled::list-group-item-danger :list-group-item" }}>
+                            {{ tenant.name }}
+                            ({{ tenant.alias }})
+                            {{#link-to "tenant" tenant.id id=tenant.editId class="btn btn-default btn-xs pull-right glyphicon glyphicon-chevron-right" }}
+                            {{/link-to}}
+                        </li>
+                    {{else}}
+                        <li id="tenants_noTenants_listItem" class="list-group-item">No Tenants found. Feel free to add one :)</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="pull-left btn-group btn-group-xs">
+            {{#link-to "tenants.index" id="tenants_all_button" activeClass="btn-primary" class="btn btn-default"}}All{{/link-to}}
+            {{#link-to "tenants.enabled" id="tenants_enabled_button" activeClass="btn-primary" class="btn btn-default"}}Enabled{{/link-to}}
+            {{#link-to "tenants.disabled" id="tenants_disabled_button" activeClass="btn-primary" class="btn btn-default"}}Disabled{{/link-to}}
+        </div>
+        <div id="tenants_counter_div" class="pull-right">Displaying <strong>{{model.length}}</strong> Tenants</div>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-md-12">
+        {{#link-to 'tenants.create' id="tenants_createTenant_button" class="btn btn-success btn-sm"}}Create Tenant{{/link-to}}
+    </div>
+</div>

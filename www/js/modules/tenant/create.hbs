@@ -1,0 +1,18 @@
+<ol class="breadcrumb">
+    <li>{{#link-to "index" id="tenant_createTenant_navButton"}}Tenants{{/link-to}}</li>
+    <li id="tenant_createTenant_listItem" class="active">Create Tenant</li>
+</ol>
+<form class="form-horizontal" {{action "create" on="submit"}}>
+    {{form-input input-id="createTenant_name_input" label="Name" valueBinding="tenant.name" placeholder="Tenant name" }}
+    {{form-input input-id="createTenant_alias_input" label="Alias" valueBinding="tenant.alias" placeholder="Tenant alias" }}
+    {{form-input input-id="createTenant_locale_input" label="Preferred Locale" valueBinding="tenant.preferred_locale" placeholder="Tenant preferred locale - OPTIONAL" }}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="createTenant_submit_button" type="submit" class="btn btn-primary">Submit</button>
+            <button id="createTenant_reset_button" type="button" class="btn btn-default" {{action "reset" this on="click"}}>Reset</button>
+        </div>
+    </div>
+</form>
+{{#if errorMessage}}
+    <div id="createTenant_errorMessage_div" class="alert alert-error">{{errorMessage}}</div>
+{{/if}}
