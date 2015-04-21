@@ -1,0 +1,92 @@
+﻿// Tabs
+// -------------------------
+
+.tabs-below {
+    border-top: 1px solid @nav-tabs-border-color;
+    border-bottom: 0;
+
+    > li {
+        margin-top: -1px;
+        margin-bottom: 0;
+
+        > a {
+            .border-radius(0 0 @border-radius-base @border-radius-base);
+
+            &:hover,
+            &:focus {
+                border-top-color: @nav-tabs-border-color;
+                border-bottom-color: transparent;
+            }
+        }
+
+        &.active > a {
+            &,
+            &:hover,
+            &:focus {
+                border-color: transparent @nav-tabs-border-color @nav-tabs-border-color @nav-tabs-border-color;
+            }
+        }
+    }
+}
+
+@media (min-width: @screen-sm-min) {
+    .tabs-left {
+        float: left;
+        margin-right: 19px;
+        border-right: 1px solid @nav-tabs-border-color;
+        border-bottom: 0;
+
+        > li {
+            float: none;
+
+            > a {
+                .border-radius(@border-radius-base 0 0 @border-radius-base);
+                margin-right: -1px;
+
+                &:hover,
+                &:focus {
+                    border-color: @nav-tabs-link-hover-border-color @nav-tabs-border-color @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color;
+                }
+            }
+
+            &.active > a {
+                &,
+                &:hover,
+                &:focus {
+                    border-color: @nav-tabs-border-color transparent @nav-tabs-border-color @nav-tabs-border-color;
+                    *border-right-color: #ffffff;
+                }
+            }
+        }
+    }
+
+    .tabs-right {
+        float: right;
+        margin-left: 19px;
+        border-left: 1px solid @nav-tabs-border-color;
+        border-bottom: 0;
+
+        > li {
+            float: none;
+
+            > a {
+                .border-radius(0 @border-radius-base @border-radius-base 0);
+                margin-left: -1px;
+
+                &:hover,
+                &:focus {
+                    border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+                }
+            }
+
+            &.active > a {
+                &,
+                &:hover,
+                &:focus {
+                    border-color: @nav-tabs-border-color @nav-tabs-border-color @nav-tabs-border-color transparent;
+                    *border-left-color: #ffffff;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,204 @@
+﻿// Ultimate Software colors
+// -------------------------
+
+@us-primary-lighter-gray: #f5f5f5;
+@us-primary-light-gray: #ececec;
+@us-primary-gray: #cccccc;
+@us-primary-dark-gray: #404040;
+
+@us-primary-green: #4b9510;
+@us-primary-light-green: #5ca616;
+
+@us-primary-blue: #408bc4;
+@us-primary-dark-blue: #0A4377;
+@us-secondary-light-blue: #CDE2FA;
+
+@us-primary-help-block-color: #808080;
+@us-primary-alert-color: #FFCD19;
+@us-primary-info-color: #6288B0;
+@us-primary-error-color: #CD0E0E;
+
+// Base paths
+// -------------------------
+
+@us-image-base-path: "../bower_components/ultistylekit/images";
+
+// Base dimensions
+// -------------------------
+
+@us-base-sm-width: 5px;
+@us-base-md-width: 2*@us-base-sm-width;
+@us-base-lg-width: 3*@us-base-sm-width;
+@us-base-width: @us-base-lg-width;
+
+// Margins
+// -------------------------
+
+@us-base-margin-sm-width: @us-base-sm-width;
+@us-base-margin-md-width: @us-base-md-width;
+@us-base-margin-width: @us-base-width;
+
+// Padding
+// -------------------------
+
+@us-base-padding-sm-width: @us-base-sm-width;
+@us-base-padding-md-width: @us-base-md-width;
+@us-base-padding-width: @us-base-width;
+
+// Borders
+// -------------------------
+
+@us-base-border-width: 1px;
+@us-border-style: solid;
+@us-hr-border: #ccc;
+
+// Containers
+// -------------------------
+
+@us-container-padding-width: @us-base-padding-width;
+@us-container-margin-width: @us-base-margin-width;
+@us-container-background-color: #EEEEEE;
+@us-container-border-color: darken(@us-container-background-color, 12%);
+
+// Text colors
+// -------------------------
+
+@us-regular-body-text-color: #333;
+@us-headings-text-color: @us-regular-body-text-color;
+@us-muted-text-color: #808080;
+@input-disabled-color: #aaa;
+
+// Typography
+// -------------------------
+
+@us-font-weight: normal;
+@us-label-font-weight: @us-font-weight;
+@us-headings-font-weight: @us-font-weight;
+
+// Forms
+// -------------------------
+
+@us-required-field-indicator-color: #a94442;
+
+// Wells
+// -------------------------
+
+@us-well-padding: 19px;
+
+// Navbar
+// -------------------------
+
+@us-navbar-toggle-icon-bar-with: 18px;
+@us-navbar-toggle-icon-bar-height: 4px;
+
+// UltiPro navbar
+//
+// Reset ultipro navbar basics
+@us-navbar-ultipro-color:                      @us-primary-blue;
+@us-navbar-ultipro-bg:                         #fff;
+@us-navbar-ultipro-border:                     darken(@us-navbar-ultipro-bg, 10%);
+@us-navbar-ultipro-navbar-padding-vertical:    @navbar-padding-vertical - @us-navbar-ultipro-border-top-size/2;
+
+// Recruitment top stripe
+@us-navbar-ultipro-border-top-size:            4px;
+@us-navbar-ultipro-border-top-color:           @us-primary-light-green;
+
+// UltiPro logo
+@us-navbar-ultipro-logo-width:                 74px;
+@us-navbar-ultipro-logo-vertical-offset:       2px;
+@us-navbar-ultipro-logo-divider-width:         1px;
+@us-navbar-ultipro-logo-divider-height:        24px;
+@us-navbar-ultipro-logo-divider-margin-width:  10px;
+
+// UltiPro navbar links
+@us-navbar-ultipro-link-color:                 @us-primary-blue;
+@us-navbar-ultipro-link-hover-color:           darken(@us-navbar-ultipro-link-color, 15%);
+@us-navbar-ultipro-link-hover-bg:              transparent;
+@us-navbar-ultipro-link-active-color:          @us-navbar-ultipro-link-hover-color;
+@us-navbar-ultipro-link-active-bg:             transparent;
+@us-navbar-ultipro-link-disabled-color:        #444; // TODO: what would this be?
+@us-navbar-ultipro-link-disabled-bg:           transparent;
+
+// UltiPro navbar brand label
+@us-navbar-ultipro-brand-color:                @us-primary-dark-gray;
+@us-navbar-ultipro-brand-hover-color:          lighten(@us-navbar-ultipro-brand-color, 15%);
+@us-navbar-ultipro-brand-hover-bg:             transparent;
+
+// UltiPro navbar toggle
+@us-navbar-ultipro-toggle-hover-bg:            @us-primary-lighter-gray;
+@us-navbar-ultipro-toggle-icon-bar-bg:         @us-primary-blue;
+@us-navbar-ultipro-toggle-border-color:        @us-primary-blue;
+
+// User Navbar
+//
+@us-navbar-user-default-background-color: #5CA616;
+@us-navbar-user-default-text-color: #fff;
+@us-navbar-user-default-stripe-color: #4B9510;
+
+// Main Content
+//
+@us-main-content-padding: 1.5*@line-height-computed;
+
+// Footer
+//
+@us-footer-height: 90px;
+@us-footer-text-color: @gray-light;
+@us-footer-content-padding-top: 30px;
+
+// Working Indicator
+//
+@working-background-color: @us-primary-lighter-gray;
+@working-indicator-color: @us-regular-body-text-color;
+@working-indicator-size: 3em;
+
+// Grid List Item
+// -------------------------
+
+@us-grid-list-border-radius:                        5px;
+@us-grid-list-padding:                              0 @us-base-padding-width;
+@us-grid-list-header-color:                         @us-primary-lighter-gray;
+@us-grid-list-header-text-color:                    @us-primary-dark-gray;
+@us-grid-list-header-font-size:                     11px;
+@us-grid-list-header-important-font-weight:         bold;
+@us-grid-list-header-padding:                       @us-base-padding-md-width 0;
+@us-grid-list-content-background-color:             #fff;
+@us-grid-list-item-border-color:                    #ececec;
+@us-grid-list-item-border:                          @us-base-border-width @us-border-style @us-grid-list-item-border-color;
+@us-grid-list-item-padding:                         @us-grid-list-header-padding;
+@us-grid-list-item-primary-content-font-size:       21px;
+@us-grid-list-item-primary-content-font-weight:     @us-font-weight;
+@us-grid-list-item-importent-content-font-weight:   bold;
+
+// List Item Hover & Selection
+// -------------------------
+
+@us-list-item-border-size:                    @us-base-border-width;
+@us-list-item-border-color:                   #ececec;
+@us-list-item-border:                         @us-list-item-border-size @us-border-style @us-list-item-border-color;
+@us-list-item-hover-border-color:             fadeout(lighten(@us-primary-blue, 25%), 20%);
+@us-list-item-hover-background-color:         lighten(@us-list-item-hover-border-color, 20%);
+@us-list-item-active-border-color:            fadeout(@us-primary-blue, 20%);
+@us-list-item-active-background-color:        lighten(@us-list-item-active-border-color, 40%);
+
+
+// Bootstrap overrides
+@brand-primary:         @us-primary-blue;
+@text-color:            @us-regular-body-text-color;;
+@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@headings-font-family:    @font-family-base;
+@headings-font-weight:    @us-headings-font-weight;
+@headings-color:          @us-headings-text-color;
+@component-active-color:    @us-regular-body-text-color;
+@component-active-bg:       @us-list-item-active-background-color;
+@popover-arrow-outer-color:           rgba(0,0,0,.25);
+@popover-arrow-outer-fallback-color:  #999;
+@list-group-border:             @us-list-item-border-color;
+@list-group-hover-bg:           @us-list-item-hover-background-color;
+@list-group-active-border:      @us-list-item-active-border-color;
+@list-group-active-text-color:  darken(@list-group-active-bg, 40%);
+@text-muted:                  @us-muted-text-color;;
+@headings-small-color:        @us-primary-dark-gray;
+@hr-border:                   @us-hr-border;
+
+// Font Awesome overrides
+@fa-font-path:        "../bower_components/font-awesome/fonts";

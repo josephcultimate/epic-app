@@ -1,0 +1,168 @@
+﻿// UltiPro navbar
+
+.navbar-ultipro {
+  background-color: @us-navbar-ultipro-bg;
+  border-color: @us-navbar-ultipro-border;
+
+  background-image: url("@{us-image-base-path}/UltiProLogo.svg");
+  background-repeat: no-repeat;
+  background-position: @grid-gutter-width/2 @us-navbar-ultipro-navbar-padding-vertical + @us-navbar-ultipro-logo-vertical-offset;
+  border-top: @us-navbar-ultipro-border-top-size solid @us-navbar-ultipro-border-top-color;
+
+  @media (max-width: @screen-xs-max) {
+      background-position: center @us-navbar-ultipro-navbar-padding-vertical + @us-navbar-ultipro-logo-vertical-offset;
+  }
+
+  .navbar-brand {
+    color: @us-navbar-ultipro-brand-color;
+    padding: @us-navbar-ultipro-navbar-padding-vertical @navbar-padding-horizontal;
+    padding: (@navbar-padding-vertical - 1) @navbar-padding-horizontal (@navbar-padding-vertical - 3) @navbar-padding-horizontal;
+
+    .divider { 
+        margin: 0 @us-navbar-ultipro-logo-divider-margin-width 0 (@us-navbar-ultipro-logo-width + @us-navbar-ultipro-logo-divider-width + @us-navbar-ultipro-logo-divider-margin-width);
+        height: @us-navbar-ultipro-logo-divider-height;
+        float: left;
+        border-right: @us-navbar-ultipro-logo-divider-width solid @us-primary-gray;
+    }
+    .text { 
+        vertical-align: middle;
+    }
+
+    @media (max-width: @screen-sm-min) {
+        display: none;
+    }
+  }
+
+  a.navbar-brand {
+    &:hover,
+    &:focus {
+        color: @us-navbar-ultipro-brand-hover-color;
+        background-color: @us-navbar-ultipro-brand-hover-bg;
+    }
+  }
+
+  .navbar-text {
+    color: @us-navbar-ultipro-color;
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: @us-navbar-ultipro-link-color;
+
+      &:hover,
+      &:focus {
+        color: @us-navbar-ultipro-link-hover-color;
+        background-color: @us-navbar-ultipro-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @us-navbar-ultipro-link-active-color;
+        background-color: @us-navbar-ultipro-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @us-navbar-ultipro-link-disabled-color;
+        background-color: @us-navbar-ultipro-link-disabled-bg;
+      }
+    }
+  }
+
+  // Darken the responsive nav toggle
+  .navbar-toggle {
+    border-color: @us-navbar-ultipro-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: @us-navbar-ultipro-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: @us-navbar-ultipro-toggle-icon-bar-bg;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: darken(@us-navbar-ultipro-bg, 7%);
+  }
+
+  // Dropdowns
+  .navbar-nav {
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @us-navbar-ultipro-link-active-bg;
+        color: @us-navbar-ultipro-link-active-color;
+      }
+    }
+    > .dropdown > a:hover .caret {
+      border-top-color: @us-navbar-ultipro-link-hover-color;
+      border-bottom-color: @us-navbar-ultipro-link-hover-color;
+    }
+    > .dropdown > a .caret {
+      border-top-color: @us-navbar-ultipro-link-color;
+      border-bottom-color: @us-navbar-ultipro-link-color;
+    }
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        .caret {
+          border-top-color: @us-navbar-ultipro-link-active-color;
+          border-bottom-color: @us-navbar-ultipro-link-active-color;
+        }
+      }
+    }
+
+    @media (max-width: @screen-xs-max) {
+      // Dropdowns get custom display
+      .open .dropdown-menu {
+        > .dropdown-header {
+          border-color: @us-navbar-ultipro-border;
+        }
+        > li > a {
+          color: @us-navbar-ultipro-link-color;
+          &:hover,
+          &:focus {
+            color: @us-navbar-ultipro-link-hover-color;
+            background-color: @us-navbar-ultipro-link-hover-bg;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @us-navbar-ultipro-link-active-color;
+            background-color: @us-navbar-ultipro-link-active-bg;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @us-navbar-ultipro-link-disabled-color;
+            background-color: @us-navbar-ultipro-link-disabled-bg;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-link {
+    color: @us-navbar-ultipro-link-color;
+    &:hover {
+      color: @us-navbar-ultipro-link-hover-color;
+    }
+  }
+
+  @media (max-width: @screen-xs-max) {
+    li > a {
+        text-align: right;
+    }
+  }
+}

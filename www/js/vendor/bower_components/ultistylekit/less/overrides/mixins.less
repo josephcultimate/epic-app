@@ -1,0 +1,143 @@
+﻿// Box sizing
+.box-sizing(@box-model) {
+	-webkit-box-sizing: @box-model;
+     -moz-box-sizing: @box-model;
+          box-sizing: @box-model;
+}
+
+// Border radius
+.border-radius(@radius) {
+	-webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+      -ms-border-radius: @radius;
+       -o-border-radius: @radius;
+          border-radius: @radius;
+}
+
+.border-top-left-radius(@radius) {
+    -webkit-border-top-left-radius: @radius;
+       -moz-border-top-left-radius: @radius;
+        -ms-border-top-left-radius: @radius;
+         -o-border-top-left-radius: @radius;
+            border-top-left-radius: @radius;
+}
+
+.border-top-right-radius(@radius) {
+    -webkit-border-top-right-radius: @radius;
+       -moz-border-top-right-radius: @radius;
+        -ms-border-top-right-radius: @radius;
+         -o-border-top-right-radius: @radius;
+            border-top-right-radius: @radius;
+}
+
+.border-bottom-right-radius(@radius) {
+    -webkit-border-bottom-right-radius: @radius;
+       -moz-border-bottom-right-radius: @radius;
+        -ms-border-bottom-right-radius: @radius;
+         -o-border-bottom-right-radius: @radius;
+            border-bottom-right-radius: @radius;
+}
+
+.border-bottom-left-radius(@radius) {
+    -webkit-border-bottom-left-radius: @radius;
+       -moz-border-bottom-left-radius: @radius;
+        -ms-border-bottom-left-radius: @radius;
+         -o-border-bottom-left-radius: @radius;
+            border-bottom-left-radius: @radius;
+}
+
+// Background size
+.background-size(@background-size) {
+	-webkit-background-size: @background-size;
+     -moz-background-size: @background-size;
+      -ms-background-size: @background-size;
+       -o-background-size: @background-size;
+		  background-size: @background-size;
+}
+
+.text-overflow(@text-overflow) {
+	-ms-text-overflow: @text-overflow;
+     -o-text-overflow: @text-overflow;
+	    text-overflow: @text-overflow;
+}
+
+.text-shadow(@text-shadow) {
+    -webkit-text-shadow: @text-shadow;
+            text-shadow: @text-shadow;
+}
+
+// Set dimensions of an element
+.size(@width, @height) {
+  width: @width;
+  height: @height;
+}
+
+.size(@size) {
+	.size(@size, @size);
+}
+
+// Square
+.square(@size) {
+  .size(@size, @size);
+}
+
+// Circle
+.circle(@size) {
+	.size(@size);
+    .border-radius(50%);
+}
+
+// SVG Scale
+.svg-scale(@width, @height) {
+	display: inline-block;
+	background-position: center center;
+	background-repeat: no-repeat;
+	.background-size(contain);
+
+	.size(@width, @height);
+	.box-sizing(border-box);
+}
+
+.svg-scale(@size) {
+	.svg-scale(@size, @size);
+}
+
+.us-container() {
+    padding: @us-container-padding-width;
+    margin-bottom: 2*@us-container-margin-width;
+    background-color: @us-container-background-color;
+}
+
+.us-truncate(@display: block, @text-overflow: ellipsis) {
+	display: @display;
+	.text-overflow(@text-overflow);
+    overflow: hidden;
+}
+
+.us-center-h() {
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+// Example: .us-em-size(13, 16); // 13px with a context of 16px
+// http://tommaitland.net/2012/10/converting-pixels-to-ems-with-less/
+.us-em-size(@value: @font-size-base, @context: @font-size-base) {
+    font-size: (@value / @context) + 0em;
+}
+
+.us-responsive(@margin-top: @us-base-margin-sm-width) {
+    @media (max-width: @screen-xs-max) {
+        display: block;
+        width: 100%;
+
+        & + & {
+            margin-top: @margin-top;
+        }
+    }
+}
+
+.us-pull-right-r(@min-width: @screen-sm-min) {
+    @media (min-width: @min-width) {
+        float: right;
+    }
+}

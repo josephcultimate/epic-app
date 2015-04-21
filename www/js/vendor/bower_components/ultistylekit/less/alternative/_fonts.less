@@ -1,0 +1,17 @@
+@us-font-base-path: '../bower_components/ultistylekit/fonts';
+
+.include-custom-font(@family: arial, @file: @family, @weight: normal, @style: normal){
+    @font-face{
+        font-family: @family;
+        src: url('@{us-font-base-path}/@{file}.otf') format("opentype");
+        font-weight: @weight;
+        font-style: @style;
+    }
+}
+
+.include-custom-font("museo-sans", "MuseoSans-300", 300);
+.include-custom-font("museo-sans", "MuseoSans-300Italic", 300, italic);
+.include-custom-font("museo-sans", "MuseoSans-500", 500);
+.include-custom-font("museo-sans", "MuseoSans-500Italic", 500, italic);
+.include-custom-font("museo-slab", "MuseoSlab-300", 300);
+.include-custom-font("museo-slab", "MuseoSlab-500", 500);
