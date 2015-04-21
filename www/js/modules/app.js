@@ -1,5 +1,4 @@
-var App = Ember.Application.create({
-});
+var App = Ember.Application.create({});
 
 /* Define application templates */
 App.basepath = "js/modules/";
@@ -43,15 +42,10 @@ App.initializer({
     }
 });
 
-App.initializer({
-    name: 'phonegap',
-    before: 'compileTemplates',
-    initialize: function(container, application) {
-        application.deferReadiness();
-        alert('phonegap initialize: ' + App.onDeviceReady);
-        document.addEventListener('deviceready', App.onDeviceReady, false);
-    }
-});
+
+App.deferReadiness();
+alert('phonegap initialize: ' + App.onDeviceReady);
+document.addEventListener('deviceready', App.onDeviceReady, false);
 
 App.onDeviceReady = function() {
     App.receivedEvent();
@@ -258,4 +252,3 @@ App.ValidationMessageComponent = Ember.Component.extend({
         }
     }
 });
-
