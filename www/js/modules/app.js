@@ -43,6 +43,27 @@ App.initializer({
     }
 });
 
+App.initializer({
+    name: 'phonegap',
+    after: 'compileTemplates',
+    initialize: function(container, application) {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    }
+});
+
+App.onDeviceReady = function() {
+    App.receivedEvent();
+    var pushNotification = window.plugins.pushNotification;
+    alert("push " + pushNotification);
+    console.log("test log" + pushNotification);
+    var push = new PushNotifications(pushNotification);
+};
+
+App.receivedEvent = function() {
+    alert('event received');
+    console.log('Received Event: ');
+};
+
 /* Initialization task: determine locale and initialize i18n support */
 App.initializer({
     name: "localization",
