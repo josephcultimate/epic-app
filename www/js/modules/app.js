@@ -50,7 +50,6 @@ App.initializer({
         application.deferReadiness();
         alert('phonegap initialize');
         document.addEventListener('deviceready', App.onDeviceReady, false);
-        application.advanceReadiness();
     }
 });
 
@@ -60,6 +59,7 @@ App.onDeviceReady = function() {
     alert("push " + pushNotification);
     console.log("test log" + pushNotification);
     var push = new PushNotifications(pushNotification);
+    App.advanceReadiness();
 };
 
 App.receivedEvent = function() {
