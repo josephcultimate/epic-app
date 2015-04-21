@@ -64,7 +64,7 @@ App.initializer({
 });
 
 /* Application property: REST API host */
-App.apiHost = window.location.protocol + '//' + window.location.hostname + ':3001';
+App.apiHost = '10.50.52.72:3001';
 App.session_token = null;
 App.defaultHeaders = function() {
     return {
