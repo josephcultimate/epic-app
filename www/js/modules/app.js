@@ -49,7 +49,7 @@ App.initializer({
     initialize: function(container, application) {
         application.deferReadiness();
         alert('phonegap initialize');
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', App.onDeviceReady, false);
         application.advanceReadiness();
     }
 });
