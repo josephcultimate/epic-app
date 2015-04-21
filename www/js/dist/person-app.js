@@ -48,7 +48,7 @@ App.initializer({
     after: 'compileTemplates',
     initialize: function(container, application) {
         application.deferReadiness();
-        alert('phonegap initialize');
+        alert('phonegap initialize: ' + App.onDeviceReady);
         document.addEventListener('deviceready', App.onDeviceReady, false);
     }
 });
