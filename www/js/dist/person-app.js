@@ -48,7 +48,6 @@ App.initializer({
     before: 'compileTemplates',
     initialize: function(container, application) {
         application.deferReadiness();
-        alert('phonegap initialize: ' + App.onDeviceReady);
         document.addEventListener('deviceready', App.onDeviceReady, false);
     }
 });
@@ -56,14 +55,12 @@ App.initializer({
 App.onDeviceReady = function() {
     App.receivedEvent();
     var pushNotification = window.plugins.pushNotification;
-    alert("push " + pushNotification);
     console.log("test log" + pushNotification);
     var push = new PushNotifications(pushNotification);
     App.advanceReadiness();
 };
 
 App.receivedEvent = function() {
-    alert('event received');
     console.log('Received Event: ');
 };
 
@@ -323,15 +320,17 @@ App.ValidationMessageComponent = Ember.Component.extend({
 function onNotificationGcm(e) {
     console.log('onNotificationGcm: ' + JSON.stringify(e));
 
-    $("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
+    console.log('<li>EVENT -> RECEIVED:' + e.event + '</li>');
 
     switch (e.event) {
         case 'registered':
             if (e.regid.length > 0) {
                 // Your GCM push server needs to know the regID before it can push to this device
                 // here is where you might want to send it the regID for later use.
-                console.log("regID = " + e.regid);
-                alert("regID = " + e.regid);
+                console.log('regID = ' + e.regid);
+                $.get( 'http://10.50.52.72:3001/u/register/' + e.regid, function( data ) {
+                    console.log( 'Register was performed.' );
+                });
             }
             break;
 
