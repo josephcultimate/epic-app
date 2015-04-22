@@ -339,7 +339,7 @@ function onNotificationGcm(e) {
             // you might want to play a sound to get the user's attention, throw up a dialog, etc.
             if (e.foreground) {
                 // if the notification contains a soundname, play it.
-                alert("Ultimate + GO + Push Notifications == AWESOME" + e.payload.message);
+                alert(e.payload.message);
             } else {
                 if (e.coldstart) {
                     console.log('<li>--COLDSTART NOTIFICATION--' + '</li>');
