@@ -48,7 +48,6 @@ App.initializer({
     before: 'compileTemplates',
     initialize: function(container, application) {
         application.deferReadiness();
-        alert('phonegap initialize: ' + App.onDeviceReady);
         document.addEventListener('deviceready', App.onDeviceReady, false);
     }
 });
@@ -56,14 +55,12 @@ App.initializer({
 App.onDeviceReady = function() {
     App.receivedEvent();
     var pushNotification = window.plugins.pushNotification;
-    alert("push " + pushNotification);
     console.log("test log" + pushNotification);
     var push = new PushNotifications(pushNotification);
     App.advanceReadiness();
 };
 
 App.receivedEvent = function() {
-    alert('event received');
     console.log('Received Event: ');
 };
 
@@ -88,7 +85,7 @@ App.initializer({
 });
 
 /* Application property: REST API host */
-App.apiHost = 'http://10.50.52.72:3001';
+App.apiHost = 'http://10.50.209.25:3001';
 App.session_token = null;
 App.defaultHeaders = function() {
     return {
