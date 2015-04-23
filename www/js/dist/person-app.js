@@ -85,7 +85,7 @@ App.initializer({
 });
 
 /* Application property: REST API host */
-App.apiHost = 'http://10.50.209.25:3001';
+App.apiHost = 'http://10.50.52.72:3001';
 App.session_token = null;
 App.defaultHeaders = function() {
     return {
@@ -328,7 +328,7 @@ function onNotificationGcm(e) {
                 // Your GCM push server needs to know the regID before it can push to this device
                 // here is where you might want to send it the regID for later use.
                 console.log('regID = ' + e.regid);
-                $.get( 'http://10.50.209.25:3001/u/register/' + e.regid, function( data ) {
+                $.get( 'http://10.50.52.72:3001/u/register/' + e.regid, function( data ) {
                     console.log( 'Register was performed.' );
                 });
             }
