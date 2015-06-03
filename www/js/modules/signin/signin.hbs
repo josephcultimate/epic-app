@@ -57,7 +57,7 @@
 
                         <div id="loginModal_employees_links" class="list-group">
                             {{#each person in sortedEmployees }}
-                                <a href="#" {{action "linktoprofile" person id=uniqueprefix_emp__person.id}} class="list-group-item clearfix"><img class="img-circle mrm" {{bind-attr src=person.pictureLink}} width="40" />{{ person.fullname }}</a>
+                                <a href="#" {{action "linktoprofile" person id=uniqueprefix_emp__person.id}} id="mobile_{{person.id}}" class="list-group-item clearfix"><img class="img-circle mrm" {{bind-attr src=person.pictureLink}} width="40" />{{ person.fullname }}</a>
                             {{/each}}
                         </div>
                         <div class="clearfix"></div>
@@ -103,7 +103,7 @@
 
                         <div id="loginModal_manadmins_links" class="list-group">
                             {{#each person in sortedManagersAdmins }}
-                                <a href="#" {{action "linktoprofile" person id=uniqueprefix_emp__person.id}} class="list-group-item clearfix"><img class="img-circle mrm" {{bind-attr src=person.pictureLink}} width="40" />{{ person.fullname }}</a>
+                                <a href="#" {{action "linktoprofile" person id=uniqueprefix_emp__person.id}} id="mobile_{{person.id}}" class="list-group-item clearfix"><img class="img-circle mrm" {{bind-attr src=person.pictureLink}} width="40" />{{ person.fullname }}</a>
                             {{/each}}
                         </div>
                         <div class="clearfix"></div>
@@ -126,7 +126,7 @@
 
                         <div id="loginModal_empadmins_links" class="list-group">
                           {{#each person in sortedEmployeesAdmins }}
-                              <a href="#" {{action "linktoprofile" person id=uniqueprefix_emp__person.id}} class="list-group-item clearfix"><img class="img-circle mrm" {{bind-attr src=person.pictureLink}} width="40" />{{ person.fullname }}</a>
+                              <a href="#" {{action "linktoprofile" person id=uniqueprefix_emp__person.id}} id="mobile_{{person.id}}" class="list-group-item clearfix"><img class="img-circle mrm" {{bind-attr src=person.pictureLink}} width="40" />{{ person.fullname }}</a>
                           {{/each}}
                         </div>
                         <div class="clearfix"></div>
@@ -163,14 +163,13 @@
             <div class="tab-pane pll pvm active">
                 <p>
                     {{#each person in sortedModel }}
-                        <a href="#" {{action "linktoprofile" person}} class="btn btn-block signin-person-link"><img class="img-circle mrm" {{bind-attr src=person.pictureLink}} width="40" />{{ person.fullname }}</a>
+                        <a href="#" {{action "linktoprofile" person}} id="desktop_{{person.id}}" class="btn btn-block signin-person-link"><img class="img-circle mrm" {{bind-attr src=person.pictureLink}} width="40" />{{ person.fullname }}</a>
                     {{/each}}
                 </p>
             </div>
         </div>
         {{/if}}
         <!-- END: User Links -->
-
     </div>
 
 </div>

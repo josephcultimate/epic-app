@@ -4,24 +4,20 @@
     <div class="row ptl visible-xs">
         <h3 id="presence_mobile_title" class="mll mbn pbm">{{t "system.presence.title"}}</h3>
         <div class="avatar-container">
-          {{#if picture}}
-              <img id="presence_mobile_profile_image" class="img-circle mbl pull-left profile-pic" {{bind-attr src=picture}} />
-          {{else}}
-              <img id="presence_mobile_profile_default_image" class="img-circle mbl pull-left profile-pic" src="/assets/person_114x114.png">
-          {{/if}}
+            <img id="presence_mobile_profile_image" class="img-circle mbl pull-left profile-pic" {{bind-attr src=model.pictureLink}} />
         </div>
         <div class="contact-info">
             <h3 id="presence_mobile_fullname" class="mtn mbn">
-              {{first_name}} {{last_name}}
+              {{model.first_name}} {{model.last_name}}
             </h3>
             <div class="row">
                 <div id="presence_mobile_position_location" class="col-md-4 col-lg-4">
-                  {{position}} {{#if position}}<br>{{/if}}
-                  {{location}}
+                  {{model.position}} {{#if model.position}}<br>{{/if}}
+                  {{model.location}}
                 </div>
                 <div class="col-md-7 col-md-7">
-                  {{#if email}}<a id="presence_email_link_xs" {{linkToMail email}} >{{email}}</a><br />{{/if}}
-                  {{#if phone_number}}<a id="presence_phone_link_xs" {{linkToTel phone_number_link}} >{{phone_number}}</a><br />{{/if}}
+                  {{#if model.email}}<a id="presence_email_link_xs" {{bind-attr href=model.email_link}} >{{model.email}}</a><br />{{/if}}
+                  {{#if model.phone_number}}<a id="presence_phone_link_xs" {{bind-attr href=model.phone_number_link}} >{{model.phone_number}}</a><br />{{/if}}
                 </div>
             </div>
         </div>
@@ -30,27 +26,22 @@
     <!-- DESKTOP: BEGIN -->
     <div class="row ptl hidden-xs">
         <div class="avatar-container">
-            {{#if picture}}
-                <img id="presence_profile_image" class="img-circle mbl pull-left profile-pic" {{bind-attr src=picture}} />
-            {{else}}
-                <img id="presence_profile_default_image" class="img-circle mbl pull-left profile-pic" src="/assets/person_114x114.png">
-            {{/if}}
+            <img id="presence_desktop_profile_image" class="img-circle mbl pull-left profile-pic" {{bind-attr src=model.pictureLink}} />
         </div>
         <div class="contact-info">
             <h3 id="presence_fullname" class="mtn mbn">
-                {{first_name}} {{last_name}}
+                {{model.first_name}} {{model.last_name}}
             </h3>
             <div class="row">
                 <div id="presence_position_location" class="col-sm-5 col-md-5 col-lg-5">
-                    {{position}} {{#if position}}<br>{{/if}}
-                    {{location}}
+                    {{model.position}} {{#if model.position}}<br>{{/if}}
+                    {{model.location}}
                 </div>
                 <div class="col-sm-7 col-md-7 col-lg-7">
-                  {{#if email}}<a id="presence_email_link" href="" {{linkToMail email}} >{{email}}</a><br />{{/if}}
-                  {{#if phone_number}}<a id="presence_phone_link" href="" {{linkToTel phone_number_link}} >{{phone_number}}</a><br />{{/if}}
+                  {{#if model.email}}<a id="presence_email_link" href="" {{bind-attr href=model.email_link}} >{{model.email}}</a><br />{{/if}}
+                  {{#if model.phone_number}}<a id="presence_phone_link" href="" {{bind-attr href=model.phone_number_link}} >{{model.phone_number}}</a><br />{{/if}}
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -61,51 +52,127 @@
     </div>
     <div class="row">
         <div class="user-details col-sm-7">
+
+            <!-- ABOUT -->
             <div id="presence_about_you_section" class="pll">
+                {{#if model.matchingUserAndPresence}}
                 <h3>{{t "system.presence.aboutyou"}}</h3>
-                {{#if about}}
-                    {{about}}
                 {{else}}
-                    Come back later to know more about me.
+                <h3>{{t "system.presence.about"}} {{model.first_name}}</h3>
+                {{/if}}
+                {{#if model.about}}
+                    {{model.about}}
+                {{else}}
+                  {{t "system.presence.about.missing"}}
                 {{/if}}
                 <hr>
             </div>
 
-            <div id="presence_education_section" class="pll">
-                <h3><i class="fa fa-graduation-cap"></i> {{t "system.presence.education"}}</h3>
-                <ul class="list-unstyled">
-                {{#each education in model.educations }}
-                    <li class="mbl clearfix">
-                        <div id="presence_education_school"><strong>{{education.school}}</strong><br></div>
-                        {{#if education.specialization}}<div id="presence_education_specialization">{{education.specialization}}</div>{{/if}}
-                        {{#if education.description}}<div id="presence_education_description">{{education.description}}</div>{{/if}}
-                    </li>
-                {{else}}
-                    Come back later to see my education.
-                {{/each}}
-                </ul>
-                <hr>
-            </div>
-
+            <!-- EXPERIENCE -->
             <div id="presence_experience_section" class="pll">
                 <h3><i class="fa fa-building-o"></i> {{t "system.presence.experience"}}</h3>
                 <ul class="list-unstyled">
-                    {{#each experience in model.experiences }}
-                        <li class="mbl clearfix">
-                            <div id="presence_experience_company"><strong>{{experience.company}}</strong><br></div>
-                            <div id="presence_experience_title">{{experience.job_title}}<br></div>
-                            {{#if experience.location}}<div id="presence_experience_location">{{experience.location}}</div>{{/if}}
+                    {{#each experience in sortedExperiences }}
+                        <li class="mbl clearfix" {{bind-attr id="experience.rowId"}}>
+                            <div id="presence_experience_title"><strong>{{experience.job_title}}</strong></div>
+                            <div id="presence_experience_company">{{experience.company}}</div>
+                            {{#if experience.durationAndLocation}}<div id="presence_experience_location" class="text-muted">{{experience.durationAndLocation}}</div>{{/if}}
                             {{#if experience.description}}<div id="presence_experience_description">{{experience.description}}</div>{{/if}}
                         </li>
                     {{else}}
-                        Come back later to see my experience.
+                        {{t "system.presence.experience.missing"}}
                     {{/each}}
                 </ul>
                 <hr>
             </div>
-        </div>
-        <div class="col-sm-offset-1 col-sm-4">
 
+            <!-- EDUCATION -->
+            <div id="presence_education_section" class="pll">
+                <h3><i class="fa fa-graduation-cap"></i> {{t "system.presence.education"}}</h3>
+                <ul class="list-unstyled">
+                  {{#each education in sortedEducations }}
+                      <li class="mbl clearfix" {{bind-attr id="education.rowId"}}>
+                        <div id="presence_education_school" class="strong">{{education.school}}</div>
+                        {{#if education.specialization}}<div id="presence_education_specialization">{{education.specialization}}</div>{{/if}}
+                        {{#if education.dateRange}}<div id="presence_education_dates" class="text-muted">{{education.dateRange}}</div>{{/if}}
+                        {{#if education.description}}<div id="presence_education_description">{{education.description}}</div>{{/if}}
+                      </li>
+                  {{else}}
+                    {{t "system.presence.education.missing"}}
+                  {{/each}}
+                </ul>
+                <hr>
+            </div>
+
+            <!-- CERTIFICATIONS -->
+            <div id="presence_certification_section" class="pll">
+                <h3><i id="presence_certification_section_header" class="fntMd fa fa-certificate"></i> {{t "system.presence.certification"}}</h3>
+                <ul class="list-unstyled">
+                  {{#each certification in sortedCertifications }}
+                      <li class="mbl clearfix" {{bind-attr id="certification.rowId"}}>
+                          <div id="presence_certification_name" class="strong">{{certification.name}}</div>
+                        {{#if certification.duration}}<div id="presence_certification_duration" class="text-muted">{{certification.duration}}</div>{{/if}}
+                        {{#if certification.description}}<div id="presence_certification_description">{{certification.description}}</div>{{/if}}
+                      </li>
+                  {{else}}
+                    {{t "system.presence.certification.missing"}}
+                  {{/each}}
+                </ul>
+                <hr>
+            </div>
+
+            <!-- SKILLS -->
+            <div id="presence_skill_section" class="pll">
+                <h3>
+                    <i id="presence_skill_section_header" class="fntMd fa fa-wrench"></i>
+                    {{t "system.presence.skill"}}
+                </h3>
+
+                <ul class="list-inline">
+                    {{#each skill in sortedSkills }}
+                        <li {{bind-attr id="skill.rowId"}}>
+                            <div {{bind-attr class=":tile skill.showWillingToHelp:shared"}}>
+                                {{skill.description}}
+                            </div>
+                        </li>
+                    {{else}}
+                        <li>
+                            {{t "system.presence.skill.missing"}}
+                        </li>
+                    {{/each}}
+                </ul>
+                {{#if showSkillsLegend}}
+                    <div id="presence_skill_legend">
+                        <div class="skill-legend shared text-muted">
+                            {{t "system.presence.skill.legend"}}
+                        </div>
+                    </div>
+                {{/if}}
+                <hr>
+            </div>
+
+            <!-- HOBBIES -->
+            <div id="presence_hobbies_section" class="pll">
+                <h3>
+                    <i id="presence_hobbies_section_header" class="fntMd fa fa-paint-brush"></i>
+                    {{t "system.presence.hobbies"}}
+                </h3>
+                <ul class="list-inline invite-edit block">
+                    {{#each hobby in sortedHobbies}}
+                        <li {{bind-attr id="hobby.rowId"}}>
+                            <div class="tile">{{hobby.name}}</div>
+                        </li>
+                    {{else}}
+                        <li>
+                            {{t "system.presence.hobbies.missing"}}
+                        </li>
+                    {{/each}}
+                </ul>
+                <hr />
+            </div>
+
+            <div class="col-sm-offset-1 col-sm-4">
+            </div>
         </div>
     </div>
 </div>

@@ -2205,6 +2205,7 @@ textarea.input-lg, select[multiple].input-lg {
 .has-feedback .form-control {
 	padding-right: 43.75px;
 }
+/*?*/
 .form-control-feedback {
 	position: absolute;
 	top: 26px;
@@ -2226,6 +2227,7 @@ textarea.input-lg, select[multiple].input-lg {
 	height: 31px;
 	line-height: 31px;
 }
+/*?*/
 .has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline {
 	color: #346b00;
 }
@@ -3398,14 +3400,18 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 	}
 }
 @media (min-width: 768px) {
-	.navbar-left {
-		float: left !important;
-		float: left;
-	}
-	.navbar-right {
-		float: right !important;
-		float: right;
-	}
+    .navbar-left {
+        float: left !important;
+        float: left;
+    }
+    .navbar-right {
+        float: right !important;
+        float: right;
+        margin-right: -15px;
+    }
+    .navbar-right ~ .navbar-right {
+        margin-right: 0;
+    }
 }
 .navbar-form {
 	margin-left: -15px;
@@ -3429,6 +3435,9 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 		width: auto;
 		vertical-align: middle;
 	}
+    .navbar-form .form-control-static {
+        display: inline-block;
+    }
 	.navbar-form .input-group {
 		display: inline-table;
 		vertical-align: middle;
@@ -3484,9 +3493,6 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 		padding-bottom: 0;
 		-webkit-box-shadow: none;
 		box-shadow: none;
-	}
-	.navbar-form.navbar-right:last-child {
-		margin-right: -15px;
 	}
 }
 .navbar-nav > li > .dropdown-menu {

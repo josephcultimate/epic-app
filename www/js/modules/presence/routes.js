@@ -8,8 +8,9 @@ App.ProfileRoute = App.AuthenticatedRoute.extend({
 
     setupController : function(controller, model) {
 
-        // set the global presence-- we need this for rendering the navigation bar
-        App.set('presence', model);
+        // set the application-wide display presence
+        App.setDisplayPresence(model);
+
         controller.set('model', model);
     }
 });

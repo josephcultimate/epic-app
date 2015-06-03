@@ -1,24 +1,43 @@
-<div class="search-input">
+<!-- SearchBar::Form BEGIN -->
+<form class="search-input" id="search_input_box">
     <div class="form-group has-feedback">
-      {{input id='search' class='form-control' autocomplete='off' type='search'
-              placeholder=placeholderText value=searchText
-              focus-in='searchEnter' focus-out='searchExit'}}
+      {{input id='search' class='form-control with-ellipsis' autocomplete='off' type='search'
+              placeholder=placeholderText
+              value=searchText
+              focus-in='searchEnter'
+              focus-out='searchExit'}}
 
       <span class="form-control-feedback">
         {{#if isCollapsed}}
-        <i class="fa fa-search"></i>
+            <i class="fa fa-search"></i>
+        {{/if}}
+        {{#if isWorking}}
+            <i class="fa fa-spinner fa-spin"></i>
         {{/if}}
         {{#if isExpandedDirty}}
-        <label for="search" {{action 'searchClear'}}>
-          <i class="fa fa-times" style="cursor: pointer; pointer-events: all;"></i>
-        </label>
+          <label for="search">
+              <i class="fa fa-times" style="cursor: pointer; pointer-events: all;" {{action 'searchClear'}}></i>
+          </label>
         {{/if}}
       </span>
     </div>
 
     {{#if isExpanded}}
-    <a href="#" class="btn btn-primary search-button" {{action 'searchExecute'}}>
+    <a href="" {{action 'transitionToProfileByIndex'}} class="btn btn-primary search-button">
         <i class="fa fa-search"></i>
     </a>
     {{/if}}
-</div>
+</form>
+<!-- SearchBar::Form END -->
+
+<!-- SearchBar::Results BEGIN -->
+{{#if hasVisibleSearchResults}}
+  <div id="search-results" class="list-group search-results">
+    <!-- SearchBar::Results::Item BEGIN -->
+    {{#each result in searchResults}}
+      {{search-result data=result searchText=searchText}}
+    {{/each}}
+    <!-- SearchBar::Results::Item END -->
+  </div>
+{{/if}}
+<!-- SearchBar::Results END -->

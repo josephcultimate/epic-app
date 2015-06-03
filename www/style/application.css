@@ -47,17 +47,18 @@
 .main {
     display: -webkit-flex;
     display: flex;
-    min-height: 100vh;
+    min-height: calc(100vh - 55px);
 }
 .main .sidebar {
     width: 200px;
     background-color: #4b9510;
+    min-height: calc(100vh - 55px);
 }
 .main .body {
     -webkit-flex: 1;
     flex: 1;
-    /*
-padding-left: 15px;
+/*
+    padding-left: 15px;
     padding-right: 15px;
 */
 }
@@ -563,9 +564,14 @@ a:focus {
   outline: 0;
   background-color: #428bca;
 }
+.search-results .search-result-pic {
+    height: 50px;
+    width: 50px;
+}
 .search-input {
   position: relative;
 }
+
 .search-input .form-control,
 .search-input .form-group {
   -webkit-transition: padding-right 0.2s cubic-bezier(0.23, 1, 0.32, 1);
@@ -574,11 +580,14 @@ a:focus {
   display: block;
   width: 100%;
 }
+.search-input .form-control-feedback {
+    top: 0;
+}
 .expanded .search-input .form-control {
   padding-right: 75px;
 }
 .expanded .search-input .form-control-feedback {
-  right: 35px;
+    right: 35px;
 }
 .search-button {
   position: absolute;
@@ -601,7 +610,6 @@ a:focus {
 /*******************
  * Mobile
  *******************/
-
 @media (max-width: 768px) {
     .search-container {
         position: absolute;
@@ -609,20 +617,119 @@ a:focus {
         border: 0;
         margin-left: 0;
         margin-right: 0;
-        right: 60px;
+        right: 1vw;                             /* ULTI-168607 right slack for the search input when not logged in */
     }
     .search-container.expanded {
-        -webkit-transform: translateX(52.5px);
-        transform: translateX(52.5px);
-        width: calc(100vw - 15px);
+        width: calc(100vw - 2vw);               /* ULTI-168607 100% of view port except 1% on each end */
+    }
+    .search-container.logged {
+        position: absolute;
+        padding: 0;
+        border: 0;
+        margin-left: 0;
+        margin-right: 0;
+        right: 88px;                            /* ULTI-168607 right slack for the search input when logged in */
+    }
+    .search-container.expanded.logged {
+        -webkit-transform: translateX(calc(88px - 1vw));    /* ULTI-168607 right slack of 1% of the view port */
+        transform: translateX(calc(88px - 1vw));            /* ULTI-168607 right slack of 1% of the view port */
+        width: 98vw;                            /* ULTI-168607 100% of view port except 1% on each end */
     }
     .search-results {
         left: -7.5px;
         width: 100vw;
-        max-height: 100vh;
+        height: calc(100vh - 60px);          /* viewport height minus 60 pixels for top slack */
+        max-height: 90vh;
         padding-bottom: 400px;
     }
     .search-button {
         width: inherit !important;
     }
+}
+
+/* ULTI-168607 make the search bar occlude the tenant logo/name (Thanks, Asif) */
+.navbar-header {
+    position: absolute;
+    z-index: 1;
+}
+
+/* ULTI-168607 make the search bar occlude the tenant logo/name (Thanks, Asif) */
+.search-container {
+    z-index: 2;
+}
+
+/* ULTI-168607 display ellipsis if the text doesn't fit the widget */
+.with-ellipsis {
+    text-overflow: ellipsis;
+}
+
+/* ULTI-168607 remove MS default clear widget embedded in the search input */
+input[type="search"]::-ms-clear {
+    display: none;
+    -webkit-appearance: none;
+}
+
+/* ULTI-169063 inline decoration for search matches within search results pane */
+.matching-search-text {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* ULTI-169063 padding each search result line so that the desktop display shows 5 and one half entries */
+.search-result-entry {
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+
+/* Tile layout */
+.tile {
+    background-color: #E3E3E3;
+    padding: 9px 15px;
+    position: relative;
+    margin: 0 15px 15px 0;
+    min-height: 36px;
+    display: inline-block;
+}
+.tile.shared {
+    padding-left: 51px;
+    padding-right: 15px;
+}
+.tile.shared:after {
+    content: ' ';
+    display: block;
+    background-color: #b2b2b2;
+    background-image: url('../assets/handsupwithoutbg.png');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    width: 36px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.skill-legend {
+    position: relative;
+    margin: 0 15px 15px 0;
+    display: inline-block;
+}
+.skill-legend.shared {
+    padding-left: 30px;
+    padding-right: 15px;
+    padding-top: 2px;
+}
+.skill-legend.shared:after {
+    content: ' ';
+    display: block;
+    background-color: #b2b2b2;
+    background-image: url('../assets/handsupwithoutbg.png');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    width: 24px;
+    left: 0;
+    top: 0;
+    bottom: 0;
 }

@@ -3,13 +3,13 @@
     <div class="container-fluid">
       
     <!-- BEGIN::far-right-drop-down-menu -->
-      <ul class="nav navbar-nav navbar-right mbn">
+      <ul class="nav navbar-nav navbar-right mbn pull-right">
 
         {{#if SessionToken}}
           <!-- BEGIN::desktop -->
           <li class="dropdown hidden-xs">
               <a href="" data-toggle="dropdown" class="dropdown-toggle">
-                <span id="application_presence_name">{{ Presence.first_name }} {{ Presence.last_name }}</span>
+                <span id="application_presence_name">{{ User.first_name }} {{ User.last_name }}</span>
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
@@ -31,7 +31,9 @@
       </ul>
 
       <!-- SearchBar Component -->
-      {{search-bar controller=controller}}
+      {{#if isLogged}}
+      {{search-bar}}
+      {{/if}}
 
       <div class="navbar-header">
 
@@ -39,7 +41,7 @@
         <span class="navbar-brand hidden-xs">
           <span class="divider"></span>
       	  {{#if SessionToken}}
-            <span class="text" id="application_tenant">{{ Presence.tenant_name }}</span>
+            <span class="text" id="application_tenant">{{ User.tenant_name }}</span>
           {{else}}
             <span class="text" id="application_default_tenant">Epic, inc.</span>
           {{/if}}
@@ -49,9 +51,9 @@
       </div>
     </div>
   </div>
-  <!-- END::top-part -->
+<!-- END::top-part -->
 
-  <!-- BEGIN::bottom-part -->
+<!-- BEGIN::bottom-part -->
   <div class="main below-navbar">
 
     {{#if SessionToken}}
@@ -60,7 +62,7 @@
     <div class="sidebar ptm animated hidden-xs">
       <ul class="nav nav-bars">
         <li class="active">
-          <a href="" id="application_sidebar_item_presence" {{action "presence" bubbles=false}}><i class="fa fa-fw fa-lg fa-user"></i> {{t "system.presence.menu"}}</a>
+          <a href="" id="application_sidebar_item_presence" {{action "transitionToUserProfile"}}><i class="fa fa-fw fa-lg fa-user"></i> {{t "system.presence.menu"}}</a>
         </li>
       </ul>
     </div>
@@ -68,10 +70,10 @@
     <!-- END::left-navbar -->
 
     <!-- BEGIN::main-content -->
-    <div class="body" autoscroll>
+    <div class="body">
       {{outlet}}
     </div>
     <!-- END::main-content -->
 
   </div>
-  <!-- END::bottom-part -->
+<!-- END::bottom-part -->

@@ -60,7 +60,8 @@ App.Person = DS.Model.extend(Ember.Validations.Mixin, {
     },
 
     pictureLink: function() {
-        return (this.get('picture') && this.get('picture') !== '') ? this.get('picture') : '../../assets/person_40x40.png';
+        var normalized = App.normalizeRelativePath("/assets/person_40x40.png");
+        return (this.get('picture') && this.get('picture') !== '') ? this.get('picture') : normalized;
     }.property('picture')
 });
 

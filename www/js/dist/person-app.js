@@ -4,14 +4,15 @@ var App = Ember.Application.create({
 /* Define application templates */
 App.basepath = "js/modules/";
 App.templates = [
-    {name: 'components/form-input', path: App.basepath + 'components.hbs'},
-    {name: 'components/search-bar', path: App.basepath + 'components/search.hbs'},
-    {name: 'application',           path: App.basepath + 'application.hbs'},
-    {name: 'persons',               path: App.basepath + 'signin/signin.hbs'},
-    {name: 'profile', 				path: App.basepath + 'presence/presence.hbs'},
-    {name: 'tenant', 				path: App.basepath + 'tenant/tenant.hbs'},
-    {name: 'tenants/create', 		path: App.basepath + 'tenant/create.hbs'},
-    {name: 'tenants/index', 		path: App.basepath + 'tenant/tenants.hbs'}
+    {name: 'components/form-input',         path: App.basepath + 'components.hbs'},
+    {name: 'components/search-bar',         path: App.basepath + 'components/search.hbs'},
+    {name: 'components/search-result',      path: App.basepath + 'components/searchResult.hbs'},
+    {name: 'application',                   path: App.basepath + 'application.hbs'},
+    {name: 'persons',                       path: App.basepath + 'signin/signin.hbs'},
+    {name: 'profile', 				        path: App.basepath + 'presence/presence.hbs'},
+    {name: 'tenant', 				        path: App.basepath + 'tenant/tenant.hbs'},
+    {name: 'tenants/create', 		        path: App.basepath + 'tenant/create.hbs'},
+    {name: 'tenants/index', 		        path: App.basepath + 'tenant/tenants.hbs'}
 ];
 
 // default locale computation: try to retrieve window.navigator locale information or use a default
@@ -85,8 +86,22 @@ App.initializer({
 });
 
 /* Application property: REST API host */
-App.apiHost = 'http://10.50.52.72:3001';
+//48hrs: App.apiHost = 'http://10.50.52.72:3001';
+App.apiHost = window.location.pathname && window.location.pathname.length > 1 ? window.location.protocol + '//' + window.location.hostname + ':3001' + window.location.pathname.substr(0, window.location.pathname.length - 1) : window.location.protocol + '//' + window.location.hostname + ':3001';
+App.apiHost = window.location.protocol + '//' + window.location.hostname + ':3001';
+
 App.session_token = null;
+App.user = null;
+
+App.normalizeRelativePath = function(path) {
+    var pathname = App.windowPathName;
+
+    if (pathname && pathname.length > 1) {
+        return pathname.substr(0, pathname.length - 1) + path;
+    }
+    return path;
+};
+
 App.defaultHeaders = function() {
     return {
         'Accept': 'application/json',
@@ -187,17 +202,40 @@ App.post = function (postRequest, onSuccess, onError) {
     return request;
 };
 
+App.defaultSetDisplayPresence = function(model) {
+
+    App.set('presence', model);
+
+    var user = App.get('user');
+    if (user === null && model !== null && App.isValidSessionToken()) {
+        App.set('user', model);
+    }
+};
+
 App.defaultSetSessionToken = function(token) {
-    App.set("session_token", token);
+    App.set('session_token', token);
+
+    if (!App.isValidSessionToken()) {
+        App.resetState();
+    }
+};
+
+App.isValidSessionToken = function() {
+    var token = App.get('session_token');
+    return !(typeof token === 'undefined' || token === null || token === 'Bearer None');
+};
+
+App.resetState = function() {
+    App.set('presence', null);
+    App.set('user', null);
 };
 
 /*
- * This setter is exposed to enable overriding. During testing, tt is necessary to wrap this setter's
- * body using Ember.run() otherwise JS unit tests fail (on the browser only) with the infamous error
- * indicating that setting the property must be done in a run loop. Setting the property itself is not
- * the problem. The computed properties defined on the ApplicationController, which listen on changes
- * to the application token, are recalculated (asynchronously) every time the application token is set.
+ * These setters are exposed to enable overriding. During testing, tt is necessary to wrap their bodies
+ * using Ember.run() otherwise JS unit tests fail (on the browser only) with an infamous error indicating
+ * that setting the property must be done in a run loop. Setting these properties is not the problem.
  */
+App.setDisplayPresence = App.defaultSetDisplayPresence;
 App.setSessionToken = App.defaultSetSessionToken;
 
 App.trimString = function(value) {
@@ -227,11 +265,11 @@ App.enableLogging = function() {
  */
 
 App.returnSafeMailToHref = function(target) {
-    return new Ember.Handlebars.SafeString('href="mailTo:' + target + '"');
+    return new Ember.Handlebars.SafeString('mailTo:' + target);
 };
 
 App.returnSafeTelHref = function(target) {
-    return new Ember.Handlebars.SafeString('href="tel:' + target + '"');
+    return new Ember.Handlebars.SafeString('tel:' + target);
 };
 
 Ember.Handlebars.registerBoundHelper('linkToMail', App.returnSafeMailToHref);
@@ -255,7 +293,6 @@ App.ValidationMessageComponent = Ember.Component.extend({
         }
     }
 });
-
 ;App.PostRequest = Ember.Object.extend({
     endpointRoute: null,
     data: null
@@ -390,7 +427,7 @@ function onNotificationGcm(e) {
     // '#/presences/:presence_id'
 
     // for all other routes, use the catchAll route
-    this.route('catchAll', { path: '*:' });
+    this.route('catchAll', { path: '*path' });
 });
 
 App.CatchAllRoute = Ember.Route.extend({
@@ -401,14 +438,13 @@ App.CatchAllRoute = Ember.Route.extend({
 
 App.IndexRoute = Ember.Route.extend({
     model : function() {
-        return this.transitionTo("employees");
+        return this.transitionTo('employees');
     }
 });
 
 App.ApplicationRoute = Ember.Route.extend({
 
     actions : {
-
         logout : function() {
             this._logout();
         }
@@ -423,11 +459,28 @@ App.ApplicationRoute = Ember.Route.extend({
 
 App.ApplicationController = Ember.Controller.extend({
 
-    SessionToken : function() {
-        return App.get('session_token');
+    actions: {
+        transitionToProfile: function(profileId) {
+            this.transitionToRoute('profile', profileId);
+        },
+        transitionToUserProfile: function() {
+            var user = App.get('user');
+            if (user && user.get('id')) {
+                this.transitionToRoute('profile', user.get('id'));
+            }
+        }
+    },
+
+    // ensures window scrolls to top after route transitioned
+    currentPathChanged: function () {
+        window.scrollTo(0, 0);
+    }.observes('currentPath'),
+
+    isLogged: function() {
+        return App.isValidSessionToken();
     }.property('App.session_token'),
 
-    NavbarLoggedClass : function() {
+    NavbarLoggedClass: function() {
 
         var result = 'navbar navbar-ultipro navbar-fixed-top';
 
@@ -438,18 +491,23 @@ App.ApplicationController = Ember.Controller.extend({
         return result;
     }.property('App.session_token'),
 
-    Presence : function() {
+    Presence: function() {
         return App.get('presence');
     }.property('App.presence'),
 
-    //ensures window scrolls to top after route transitioned
-    currentPathChanged: function () {
-        window.scrollTo(0, 0);
-    }.observes('currentPath'),
+    SessionToken: function() {
+        return App.get('session_token');
+    }.property('App.session_token'),
 
-    actions: {
-        searchClear: function() {
-            alert('From AppController!');
+    User: function() {
+        return App.get('user');
+    }.property('App.session_token', 'App.user'),
+
+    UserId: function() {
+        var user = App.get('user');
+        if (user) {
+            return user.get('id');
         }
-    }
+        return null;
+    }.property('App.session_token', 'App.user')
 });

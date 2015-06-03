@@ -28,7 +28,7 @@ App.Router.map(function() {
     // '#/presences/:presence_id'
 
     // for all other routes, use the catchAll route
-    this.route('catchAll', { path: '*:' });
+    this.route('catchAll', { path: '*path' });
 });
 
 App.CatchAllRoute = Ember.Route.extend({
@@ -39,14 +39,13 @@ App.CatchAllRoute = Ember.Route.extend({
 
 App.IndexRoute = Ember.Route.extend({
     model : function() {
-        return this.transitionTo("employees");
+        return this.transitionTo('employees');
     }
 });
 
 App.ApplicationRoute = Ember.Route.extend({
 
     actions : {
-
         logout : function() {
             this._logout();
         }
@@ -61,11 +60,28 @@ App.ApplicationRoute = Ember.Route.extend({
 
 App.ApplicationController = Ember.Controller.extend({
 
-    SessionToken : function() {
-        return App.get('session_token');
+    actions: {
+        transitionToProfile: function(profileId) {
+            this.transitionToRoute('profile', profileId);
+        },
+        transitionToUserProfile: function() {
+            var user = App.get('user');
+            if (user && user.get('id')) {
+                this.transitionToRoute('profile', user.get('id'));
+            }
+        }
+    },
+
+    // ensures window scrolls to top after route transitioned
+    currentPathChanged: function () {
+        window.scrollTo(0, 0);
+    }.observes('currentPath'),
+
+    isLogged: function() {
+        return App.isValidSessionToken();
     }.property('App.session_token'),
 
-    NavbarLoggedClass : function() {
+    NavbarLoggedClass: function() {
 
         var result = 'navbar navbar-ultipro navbar-fixed-top';
 
@@ -76,18 +92,23 @@ App.ApplicationController = Ember.Controller.extend({
         return result;
     }.property('App.session_token'),
 
-    Presence : function() {
+    Presence: function() {
         return App.get('presence');
     }.property('App.presence'),
 
-    //ensures window scrolls to top after route transitioned
-    currentPathChanged: function () {
-        window.scrollTo(0, 0);
-    }.observes('currentPath'),
+    SessionToken: function() {
+        return App.get('session_token');
+    }.property('App.session_token'),
 
-    actions: {
-        searchClear: function() {
-            alert('From AppController!');
+    User: function() {
+        return App.get('user');
+    }.property('App.session_token', 'App.user'),
+
+    UserId: function() {
+        var user = App.get('user');
+        if (user) {
+            return user.get('id');
         }
-    }
+        return null;
+    }.property('App.session_token', 'App.user')
 });
