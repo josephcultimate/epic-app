@@ -92,9 +92,7 @@ App.receivedEvent = function() {
 
 
 /* Application property: REST API host */
-//48hrs: App.apiHost = 'http://10.50.52.72:3001';
-App.apiHost = window.location.pathname && window.location.pathname.length > 1 ? window.location.protocol + '//' + window.location.hostname + ':3001' + window.location.pathname.substr(0, window.location.pathname.length - 1) : window.location.protocol + '//' + window.location.hostname + ':3001';
-App.apiHost = window.location.protocol + '//' + window.location.hostname + ':3001';
+App.apiHost = 'http://10.50.15.67:3001';
 
 App.session_token = null;
 App.user = null;
