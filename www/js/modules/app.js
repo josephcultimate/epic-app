@@ -36,6 +36,7 @@ App.initializer({
     before: 'compileTemplates',
     initialize: function(container, application) {
         application.deferReadiness();
+        alert('initializing phonegap');
         document.addEventListener('deviceready', App.onDeviceReady, false);
     }
 });
@@ -47,6 +48,7 @@ App.initializer({
     initialize: function(container, application) {
         application.deferReadiness();
 
+        alert('initializing compileTemplates');
         // Pre-compile templates
         for	(var index = 0; index < App.templates.length; index++) {
             App.compileTemplate(App.templates[index]);
@@ -62,6 +64,8 @@ App.initializer({
     initialize: function (container, application) {
 
         application.deferReadiness();
+
+        alert('initializing localization');
 
         // set the default locale
         App.setDefaultLocale();
@@ -93,6 +97,7 @@ App.receivedEvent = function() {
 
 /* Application property: REST API host */
 App.apiHost = 'http://10.50.15.67:3001';
+alert('App.apiHost: '+App.apiHost);
 
 App.session_token = null;
 App.user = null;
