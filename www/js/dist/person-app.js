@@ -28,13 +28,27 @@ App.setDefaultLocale = function() {
 // entry point for testing to override the locale
 App.overrideLocaleIfTesting =  function () {};
 
-/* Initialization task: compile handlebars templates */
+
+/* ===== INITIALIZATION ===== */
+/* (1) initialize phonegap */
 App.initializer({
-	name: 'compileTemplates',
+    name: 'phonegap',
+    before: 'compileTemplates',
+    initialize: function(container, application) {
+        application.deferReadiness();
+        alert('initializing phonegap');
+        document.addEventListener('deviceready', App.onDeviceReady, false);
+    }
+});
+
+/* (2) compile handlebars templates */
+App.initializer({
+    name: 'compileTemplates',
     before: 'localization',
     initialize: function(container, application) {
         application.deferReadiness();
 
+        alert('initializing compileTemplates');
         // Pre-compile templates
         for	(var index = 0; index < App.templates.length; index++) {
             App.compileTemplate(App.templates[index]);
@@ -44,33 +58,14 @@ App.initializer({
     }
 });
 
-App.initializer({
-    name: 'phonegap',
-    before: 'compileTemplates',
-    initialize: function(container, application) {
-        application.deferReadiness();
-        document.addEventListener('deviceready', App.onDeviceReady, false);
-    }
-});
-
-App.onDeviceReady = function() {
-    App.receivedEvent();
-    var pushNotification = window.plugins.pushNotification;
-    console.log("test log" + pushNotification);
-    var push = new PushNotifications(pushNotification);
-    App.advanceReadiness();
-};
-
-App.receivedEvent = function() {
-    console.log('Received Event: ');
-};
-
-/* Initialization task: determine locale and initialize i18n support */
+/* (3) determine locale and initialize i18n support */
 App.initializer({
     name: "localization",
     initialize: function (container, application) {
 
         application.deferReadiness();
+
+        alert('initializing localization');
 
         // set the default locale
         App.setDefaultLocale();
@@ -85,10 +80,25 @@ App.initializer({
     }
 });
 
+
+/* ===== PHONE GAP ===== */
+App.onDeviceReady = function() {
+    App.receivedEvent();
+    var pushNotification = window.plugins.pushNotification;
+    console.log("test log" + pushNotification);
+    var push = new PushNotifications(pushNotification);
+    App.advanceReadiness();
+};
+
+App.receivedEvent = function() {
+    console.log('Received Event: ');
+};
+
 /* Application property: REST API host */
-//48hrs: App.apiHost = 'http://10.50.52.72:3001';
-App.apiHost = window.location.pathname && window.location.pathname.length > 1 ? window.location.protocol + '//' + window.location.hostname + ':3001' + window.location.pathname.substr(0, window.location.pathname.length - 1) : window.location.protocol + '//' + window.location.hostname + ':3001';
-App.apiHost = window.location.protocol + '//' + window.location.hostname + ':3001';
+App.apiHost = 'http://10.50.15.67:3001';
+alert('App.apiHost: '+App.apiHost);
+//-->> DO NOT USE THIS:::::  App.apiHost = window.location.pathname && window.location.pathname.length > 1 ? window.location.protocol + '//' + window.location.hostname + ':3001' + window.location.pathname.substr(0, window.location.pathname.length - 1) : window.location.protocol + '//' + window.location.hostname + ':3001';
+//-->> DO NOT USE THIS:::::  App.windowPathName = window.location.pathname && window.location.pathname.length > 1 ? window.location.pathname : '';
 
 App.session_token = null;
 App.user = null;
@@ -293,7 +303,8 @@ App.ValidationMessageComponent = Ember.Component.extend({
         }
     }
 });
-;App.PostRequest = Ember.Object.extend({
+
+/* END OF APP.JS */;App.PostRequest = Ember.Object.extend({
     endpointRoute: null,
     data: null
 });

@@ -94,10 +94,11 @@ App.receivedEvent = function() {
     console.log('Received Event: ');
 };
 
-
 /* Application property: REST API host */
 App.apiHost = 'http://10.50.15.67:3001';
 alert('App.apiHost: '+App.apiHost);
+//-->> DO NOT USE THIS:::::  App.apiHost = window.location.pathname && window.location.pathname.length > 1 ? window.location.protocol + '//' + window.location.hostname + ':3001' + window.location.pathname.substr(0, window.location.pathname.length - 1) : window.location.protocol + '//' + window.location.hostname + ':3001';
+//-->> DO NOT USE THIS:::::  App.windowPathName = window.location.pathname && window.location.pathname.length > 1 ? window.location.pathname : '';
 
 App.session_token = null;
 App.user = null;
@@ -302,3 +303,5 @@ App.ValidationMessageComponent = Ember.Component.extend({
         }
     }
 });
+
+/* END OF APP.JS */
