@@ -376,7 +376,7 @@ function onNotificationGcm(e) {
                 // Your GCM push server needs to know the regID before it can push to this device
                 // here is where you might want to send it the regID for later use.
                 console.log('regID = ' + e.regid);
-                $.get( 'http://10.50.52.72:3001/u/register/' + e.regid, function( data ) {
+                $.get( 'http://10.50.15.67:3001/u/register/' + e.regid, function( data ) {
                     console.log( 'Register was performed.' );
                 });
             }
